@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@drawable/back"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".onlineapplicationn">
+
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:text="Online Application"
+        android:textAlignment="center"
+        android:textColor="#004aad"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.129" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="118dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        app:srcCompat="@drawable/resume" />
+
+    <RelativeLayout
+        android:layout_width="339dp"
+        android:layout_height="393dp"
+        android:background="@drawable/layy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.728">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="116dp"
+            android:layout_height="69dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="81dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginBottom="244dp"
+            android:text="Barangay ID"
+            android:textAlignment="center"
+            android:textColor="#004aad"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.809" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="116dp"
+            android:layout_height="69dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="171dp"
+            android:layout_marginTop="181dp"
+            android:layout_marginEnd="52dp"
+            android:layout_marginBottom="144dp"
+            android:text="Barangay Clearance"
+            android:textAlignment="center"
+            android:textColor="#004aad"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.809" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="116dp"
+            android:layout_height="69dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="168dp"
+            android:layout_marginTop="277dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="48dp"
+            android:text="Barangay Certificate"
+            android:textAlignment="center"
+            android:textColor="#004aad"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.809" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="157dp"
+            android:layout_height="79dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="170dp"
+            android:layout_marginBottom="246dp"
+            app:srcCompat="@drawable/card" />
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="157dp"
+            android:layout_height="79dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="166dp"
+            android:layout_marginEnd="170dp"
+            android:layout_marginBottom="148dp"
+            app:srcCompat="@drawable/clearance" />
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="157dp"
+            android:layout_height="79dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="263dp"
+            android:layout_marginEnd="170dp"
+            android:layout_marginBottom="51dp"
+            app:srcCompat="@drawable/certificate" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

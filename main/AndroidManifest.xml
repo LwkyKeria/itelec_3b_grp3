@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/cat"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/cat"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BarngyApp"
+        tools:targetApi="31">
+        <activity
+            android:name=".profilee"
+            android:exported="false" />
+        <activity
+            android:name=".onlineapplicationn"
+            android:exported="false" />
+        <activity
+            android:name=".onlineappointmentt"
+            android:exported="false" />
+        <activity
+            android:name=".servicess"
+            android:exported="false" />
+        <activity
+            android:name=".homepagee"
+            android:exported="false" />
+        <activity
+            android:name=".createe"
+            android:exported="false" />
+        <activity
+            android:name=".loginn"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
