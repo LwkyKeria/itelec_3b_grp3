@@ -1,0 +1,9 @@
+<resources>
+    <string name="online_appointment">Online Appointment</string>
+    <string name="select">list_item</string>
+    <string name="app_name">BarangayApp\n</string>
+    <string name="username">Username</string>
+    <string name="password">Password\n</string>
+    <string name="Welcome">Welcome !</string>
+    <string name="barangay_app">Barangay App\n</string>
+</resources>
