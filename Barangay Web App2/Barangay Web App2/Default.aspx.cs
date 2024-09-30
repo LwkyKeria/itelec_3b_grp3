@@ -25,7 +25,7 @@ namespace Barangay_Web_App2
             }
             else
             {
-                lblResult.Text = "Tanginamo sino ka";
+                lblResult.Text = "Please enter the correct input.S";
             }
                     
         }
