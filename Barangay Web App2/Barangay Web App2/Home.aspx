@@ -67,7 +67,7 @@
         </div>
 
         <div id="content">
-            <h1>Hello, Boss!</h1>
+            <h1>Welcome, Admin!</h1>
             <p>Welcome to Barangay management system.</p>
         </div>
 
