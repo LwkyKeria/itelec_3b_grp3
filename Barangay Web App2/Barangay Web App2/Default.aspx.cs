@@ -25,7 +25,7 @@ namespace Barangay_Web_App2
             }
             else
             {
-                lblResult.Text = "Please enter the correct input.S";
+                lblResult.Text = "Your username or password is incorrect.";
             }
                     
         }
