@@ -1,25 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\",
+  "WorkspaceRootPath": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|c:\\users\\windows\\onedrive\\documents\\github\\itelec_3b_grp3\\barangay web app2\\barangay web app2\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\barangay web app2\\residents.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\residents.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\barangay web app2\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|c:\\users\\windows\\source\\repos\\barangay web app2\\barangay web app2\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\default.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\barangay web app2\\about.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\barangay web app2\\default.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\default.aspx.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\barangay web app2\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\home.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\barangay web app2\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\barangay web app2\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\barangay web app2\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\barangay web app2\\about.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\about.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\barangay web app2\\requests.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\barangay web app2\\residents.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\residents.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\barangay web app2\\requests.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{E98B7C8C-D36B-4B01-9418-15AA7B6DB2F1}|Barangay Web App2\\Barangay Web App2.csproj|solutionrelative:barangay web app2\\requests.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
@@ -30,27 +46,40 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Default.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\Default.aspx.cs",
-              "RelativeDocumentMoniker": "Barangay Web App2\\Default.aspx.cs",
-              "ToolTip": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\Default.aspx.cs",
-              "RelativeToolTip": "Barangay Web App2\\Default.aspx.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwBsAAAAzAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Default.aspx.designer.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Default.aspx.designer.cs",
+              "RelativeDocumentMoniker": "Barangay Web App2\\Default.aspx.designer.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Default.aspx.designer.cs",
+              "RelativeToolTip": "Barangay Web App2\\Default.aspx.designer.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwD4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T08:52:49.94Z"
+              "WhenOpened": "2024-10-03T10:05:28.61Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Default.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Default.aspx.cs",
+              "RelativeDocumentMoniker": "Barangay Web App2\\Default.aspx.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Default.aspx.cs",
+              "RelativeToolTip": "Barangay Web App2\\Default.aspx.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAC0AAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T08:52:49.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Residents.aspx",
-              "DocumentMoniker": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\Residents.aspx",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Residents.aspx",
               "RelativeDocumentMoniker": "Barangay Web App2\\Residents.aspx",
-              "ToolTip": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\Residents.aspx",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Residents.aspx",
               "RelativeToolTip": "Barangay Web App2\\Residents.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -58,11 +87,60 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Home.aspx",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Home.aspx",
+              "RelativeDocumentMoniker": "Barangay Web App2\\Home.aspx",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Home.aspx",
+              "RelativeToolTip": "Barangay Web App2\\Home.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-09-30T08:52:08.774Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Web.config",
+              "RelativeDocumentMoniker": "Barangay Web App2\\Web.config",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Web.config",
+              "RelativeToolTip": "Barangay Web App2\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-09-30T12:44:08.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Default.aspx",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Default.aspx",
+              "RelativeDocumentMoniker": "Barangay Web App2\\Default.aspx",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Default.aspx",
+              "RelativeToolTip": "Barangay Web App2\\Default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-10-03T08:59:41.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\UserController.cs",
+              "RelativeDocumentMoniker": "Barangay Web App2\\UserController.cs",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\UserController.cs",
+              "RelativeToolTip": "Barangay Web App2\\UserController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAiwCgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-03T09:41:57.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Requests.aspx",
-              "DocumentMoniker": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\Requests.aspx",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Requests.aspx",
               "RelativeDocumentMoniker": "Barangay Web App2\\Requests.aspx",
-              "ToolTip": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\Requests.aspx",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\Requests.aspx",
               "RelativeToolTip": "Barangay Web App2\\Requests.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -70,24 +148,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Home.aspx",
-              "DocumentMoniker": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\Home.aspx",
-              "RelativeDocumentMoniker": "Barangay Web App2\\Home.aspx",
-              "ToolTip": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\Home.aspx",
-              "RelativeToolTip": "Barangay Web App2\\Home.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-09-30T08:52:08.774Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "About.aspx",
-              "DocumentMoniker": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\About.aspx",
+              "DocumentMoniker": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\About.aspx",
               "RelativeDocumentMoniker": "Barangay Web App2\\About.aspx",
-              "ToolTip": "C:\\Users\\Windows\\OneDrive\\Documents\\GitHub\\itelec_3b_grp3\\Barangay Web App2\\Barangay Web App2\\About.aspx",
+              "ToolTip": "C:\\Users\\Windows\\source\\repos\\Barangay Web App2\\Barangay Web App2\\About.aspx",
               "RelativeToolTip": "Barangay Web App2\\About.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
