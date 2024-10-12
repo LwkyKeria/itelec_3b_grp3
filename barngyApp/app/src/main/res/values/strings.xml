@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="online_appointment">Online Appointment</string>
+    <string name="select">list_item</string>
+    <string name="app_name">BarangayApp\n</string>
+    <string name="Announcement_description">announcement Description</string>
+    <string name="username">Username</string>
+    <string name="password">Password\n</string>
+    <string name="Welcome">Welcome !</string>
+    <string name="barangay_app">Barangay App\n</string>
+    <string name="create">Create</string>
+    <string name="don_t_have_an_account">Don\'t Have an Account?</string>
+    <string name="log_in">Log in</string>
+    <string name="show_hide_password">Show/Hide Password</string>
+
+    <string-array name="barangay_off">
+        <item>Rosauro - Punong Barangay</item>
+        <item>Marlon - Sangguniang Barangay Member</item>
+        <item>Wilson - Sangguniang Barangay Member</item>
+        <item>Edward - Sangguniang Barangay Member</item>
+        <item>Edwin - Sangguniang Barangay Member</item>
+        <item>Cezar - Sangguniang Barangay Member</item>
+        <item>Teodoro - Sangguniang Barangay Member</item>
+        <item>Vidal - Sangguniang Barangay Member</item>
+        <item>Gylliane - SK Chairperson</item>
+        <item>Bernadeth - Barangay Secretary</item>
+    </string-array>
+</resources>
