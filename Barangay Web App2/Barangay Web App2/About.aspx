@@ -1,111 +1,61 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Barangay_Web_App2.About" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Barangay_Web_App2.About" Async="true" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>About - Barangay Web App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        #header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 24px;
-        }
-
-        #content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            margin-bottom: 20px;
-            border-collapse: collapse;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-    </style>
+    <title>Barangay Officials</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="header">
-            About Barangay
-        </div>
+        <div>
+            <!-- Search functionality -->
+            <h2>Search Barangay Officials</h2>
+            <asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
+            <asp:Button ID="BtnSearch" runat="server" Text="Search" OnClick="BtnSearch_Click" />
 
-        <div id="content">
+            <!-- Error Label -->
+            <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+
+            <!-- Official Input Form -->
+            <h2>Add Barangay Official</h2>
+            <div>
+                <label for="txtOfficialName">Name:</label>
+                <asp:TextBox ID="txtOfficialName" runat="server"></asp:TextBox>
+            </div>
+            <div>
+                <label for="txtOfficialPosition">Position:</label>
+                <asp:TextBox ID="txtOfficialPosition" runat="server"></asp:TextBox>
+            </div>
+            <div>
+                <label for="txtContactInfo">Contact Info:</label>
+                <asp:TextBox ID="txtContactInfo" runat="server"></asp:TextBox>
+            </div>
+            <asp:Button ID="BtnAddOfficial" runat="server" Text="Add Official" OnClick="BtnAddOfficial_Click" />
+
+            <!-- Officials Table -->
             <h2>Barangay Officials</h2>
-            <table>
-                <thead>
+            <asp:Repeater ID="OfficialsRepeater" runat="server">
+                <HeaderTemplate>
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Contact Info</th>
+                        </tr>
+                </HeaderTemplate>
+                <ItemTemplate>
                     <tr>
-                        <th>Official ID</th>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Contact Information</th>
+                        <td><%# Eval("official_id") %></td>
+                        <td><%# Eval("official_name") %></td>
+                        <td><%# Eval("official_position") %></td>
+                        <td><%# Eval("contact_info") %></td>
                     </tr>
-                </thead>
-                <tbody>
-                     <%-- Placeholder without database --%>
-                    <tr>
-                        <td>1</td>
-                        <td>Kim Andrei Besmar</td>
-                        <td>Barangay Captain</td>
-                        <td>+63 912 345 6789</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jasper Dave</td>
-                        <td>Barangay Secretary</td>
-                        <td>+63 912 987 6543</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2>Registered Residents</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Resident ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%-- Placeholder without database --%>
-                    <tr>
-                        <td>1</td>
-                        <td>Joshua Ivan Latag</td>
-                        <td>john@example.com</td>
-                        <td>123 Barangay St.</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>MJ JAMAICA</td>
-                        <td>jane@example.com</td>
-                        <td>456 Sitio Hill</td>
-                    </tr>
-                </tbody>
-            </table>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </table>
+                </FooterTemplate>
+            </asp:Repeater>
         </div>
     </form>
 </body>

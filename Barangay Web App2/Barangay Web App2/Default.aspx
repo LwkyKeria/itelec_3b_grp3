@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Barangay_Web_App2.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Barangay_Web_App2.index" Async="true" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,6 +17,10 @@
         body {
             background-color: #f0f0f0;
         }
+        #lblResult {
+            color: red;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +37,7 @@
         <div style="margin-top: 10px;">
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="Submit_Click" />
         </div>
-        <div style="margin-top: 10px;">
+        <div>
             <asp:Label ID="lblResult" runat="server"></asp:Label>
         </div>
     </form>
