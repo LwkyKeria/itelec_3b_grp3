@@ -19,7 +19,7 @@ namespace Barangay_Web_App2
                 var data = await dataService.GetDataFromApi();
                 return View(data); // Pass data to your view
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Optionally log exception here
                 return View("Error"); // Return to an error view
@@ -50,7 +50,7 @@ namespace Barangay_Web_App2
                 var data = JsonConvert.DeserializeObject<List<YourDataType>>(response);
                 return data ?? new List<YourDataType>(); // Return empty list if null
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Optionally log exception here
                 return new List<YourDataType>(); // Return empty list on failure

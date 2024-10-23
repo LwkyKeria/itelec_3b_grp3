@@ -6,7 +6,7 @@ namespace Barangay_Web_App2
 {
     public class DatabaseManager
     {
-        private readonly string connectionString;  // Marked as readonly
+        private readonly string connectionString;  
 
         public DatabaseManager()
         {
