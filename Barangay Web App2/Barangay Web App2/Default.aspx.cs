@@ -2,54 +2,72 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.UI;
 using Newtonsoft.Json;
 
 namespace Barangay_Web_App2
 {
     public partial class index : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
         protected async void Submit_Click(object sender, EventArgs e)
         {
-            // Call the API for login
-            bool isValidUser = await ValidateUserAsync(txtName.Text, txtPassword.Text);
+            string username = txtName.Text;
+            string password = txtPassword.Text;
+
+            // Call the async method to validate the user
+            bool isValidUser = await ValidateUserAsync(username, password);
 
             if (isValidUser)
             {
-                // Redirect to admin dashboard
+                // If the login is successful, redirect to Home.aspx
                 Response.Redirect("Home.aspx");
             }
             else
             {
-                // Show an error message
+                // If login fails, show an error message
                 lblResult.Text = "Invalid username or password.";
             }
         }
 
         private async Task<bool> ValidateUserAsync(string username, string password)
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                // Replace with your actual API URL
-                string apiUrl = "https://barangayapp.x10.mx/public_html/api/routes/web_api.php" + username + "&password=" + password;
-                var response = await client.GetStringAsync(apiUrl);
+                using (HttpClient client = new HttpClient())
+                {
+                    string apiUrl = "https://barangayapp.x10.mx/api/routes/web_api.php";
 
-                // Deserialize JSON response
-                var result = JsonConvert.DeserializeObject<ApiResponse>(response);
+                    // Prepare the form data for the API
+                    var data = new FormUrlEncodedContent(new[]
+                    {
+                        new KeyValuePair<string, string>("username", username),
+                        new KeyValuePair<string, string>("password", password)
+                    });
 
-                // Assuming the API returns true or false for login success
-                return result.IsValidUser; // Adjust according to your API response structure
+                    // Call the API
+                    HttpResponseMessage response = await client.PostAsync(apiUrl, data);
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+                    // Parse the API response
+                    var result = JsonConvert.DeserializeObject<ApiResponse>(responseBody);
+
+                    // Return true if the user is valid, otherwise false
+                    return result?.IsValidUser ?? false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error for debugging
+                Console.WriteLine("Error: " + ex.Message);
+                lblResult.Text = "Error occurred during login.";
+                return false;
             }
         }
+    }
 
-        public class ApiResponse
-        {
-            public bool IsValidUser { get; set; }
-        }
+    // API response class
+    public class ApiResponse
+    {
+        public bool IsValidUser { get; set; }
+        public string Error { get; set; }
     }
 }
