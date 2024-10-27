@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/back"
+    android:background="#2F3651"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".servicess">
+    tools:context=".backends.servicess">
 
     <TextView
         android:id="@+id/textView1"
@@ -14,7 +14,7 @@
         android:layout_height="39dp"
         android:text="Services"
         android:textAlignment="center"
-        android:textColor="#004aad"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,7 @@
         android:layout_height="49dp"
         android:text="Online Application"
         android:textAlignment="center"
-        android:textColor="#004aad"
+        android:textColor="@color/white"
         android:textSize="25dp"
         android:clickable="true"
         android:focusable="true"
@@ -71,7 +71,7 @@
         android:focusable="true"
         android:text="Online Appointment"
         android:textAlignment="center"
-        android:textColor="#004aad"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package com.example.barngyapp;
+package com.example.barngyapp.announcementadapter;
 
 public class announcement {
     private String title;

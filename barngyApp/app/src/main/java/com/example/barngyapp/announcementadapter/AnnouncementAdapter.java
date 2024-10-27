@@ -1,4 +1,4 @@
-package com.example.barngyapp;
+package com.example.barngyapp.announcementadapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,16 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.barngyapp.announcement;
+import com.example.barngyapp.R;
 
 import java.util.List;
 
 public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapter.AnnouncementViewHolder> {
 
-    private List<announcement> announcementList;
+    private List<announcement> announcementList; // Ensure this is the correct class name
 
     public AnnouncementAdapter(List<announcement> announcementList) {
-        this.announcementList = announcementList;
+        this.announcementList = announcementList; // Check for null if needed
     }
 
     @NonNull
@@ -29,10 +29,10 @@ public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementAdapte
 
     @Override
     public void onBindViewHolder(@NonNull AnnouncementViewHolder holder, int position) {
-        announcement announcement = announcementList.get(position);
-        holder.tvTitle.setText(announcement.getTitle());
-        holder.tvDescription.setText(announcement.getDescription());
-        holder.tvDate.setText(announcement.getDate());
+        announcement currentAnnouncement = announcementList.get(position); // Rename the variable
+        holder.tvTitle.setText(currentAnnouncement.getTitle());
+        holder.tvDescription.setText(currentAnnouncement.getDescription());
+        holder.tvDate.setText(currentAnnouncement.getDate());
     }
 
     @Override

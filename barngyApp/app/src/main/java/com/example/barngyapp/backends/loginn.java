@@ -1,4 +1,4 @@
-package com.example.barngyapp;
+package com.example.barngyapp.backends;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.barngyapp.R;
 import com.example.barngyapp.backendapi.ApiService;
 import com.example.barngyapp.backendapi.RetrofitClient;
 import com.example.barngyapp.backendapi.User;
@@ -89,6 +90,10 @@ public class loginn extends AppCompatActivity {
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+
+                etLoginUser.setText("");
+                etLoginPass.setText("");
+
                 if (response.isSuccessful() && response.body() != null) {
                     ApiResponse apiResponse = response.body();
                     if (apiResponse.isSuccess()) {
@@ -106,6 +111,8 @@ public class loginn extends AppCompatActivity {
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
                 Toast.makeText(loginn.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                etLoginUser.setText("");
+                etLoginPass.setText("");
             }
         });
     }

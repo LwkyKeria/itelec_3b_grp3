@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/cat"
+        android:icon="@drawable/balogo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/cat"
+        android:roundIcon="@drawable/balogo"
         android:supportsRtl="true"
         android:theme="@style/Theme.BarngyApp"
         tools:targetApi="31">
         <activity
-            android:name=".nextforapplication"
+            android:name=".backends.Status"
             android:exported="false" />
         <activity
-            android:name=".brgyInfo"
+            android:name=".eventadapter.eventt"
             android:exported="false" />
         <activity
-            android:name=".onlineapplicationn"
+            android:name=".backends.nextforapplication"
             android:exported="false" />
         <activity
-            android:name=".onlineappointmentt"
+            android:name=".backends.brgyInfo"
             android:exported="false" />
         <activity
-            android:name=".profilee"
+            android:name=".backends.onlineapplicationn"
             android:exported="false" />
         <activity
-            android:name=".servicess"
+            android:name=".backends.onlineappointmentt"
             android:exported="false" />
         <activity
-            android:name=".homepagee"
+            android:name=".backends.profilee"
             android:exported="false" />
         <activity
-            android:name=".createe"
+            android:name=".backends.servicess"
             android:exported="false" />
         <activity
-            android:name=".loginn"
+            android:name=".backends.homepagee"
+            android:exported="false" />
+        <activity
+            android:name=".backends.createe"
+            android:exported="false" />
+        <activity
+            android:name=".backends.loginn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

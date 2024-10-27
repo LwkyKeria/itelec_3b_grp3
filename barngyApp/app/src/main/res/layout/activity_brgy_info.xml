@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-    tools:context=".brgyInfo">
+    android:background="#2F3651"
+    tools:context=".backends.brgyInfo">
 
     <TextView
         android:id="@+id/textView1"
@@ -14,7 +14,7 @@
         android:layout_height="43dp"
         android:text="Info About The Barangay"
         android:textAlignment="center"
-        android:textColor="#004aad"
+        android:textColor="#8EBBFF"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,10 +40,10 @@
         android:layout_height="572dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.99">
+        app:layout_constraintVertical_bias="0.993">
 
         <TextView
             android:id="@+id/tvemail"
@@ -59,7 +59,7 @@
             android:layout_marginBottom="467dp"
             android:text="Barangay Office Address: "
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -78,7 +78,7 @@
             android:layout_marginBottom="232dp"
             android:text="Email Address: "
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -97,7 +97,7 @@
             android:layout_marginBottom="350dp"
             android:text="Office Phone Number: "
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -155,9 +155,9 @@
             android:layout_marginBottom="191dp"
             android:ems="10"
             android:hint="Email Address: "
+            android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:inputType="textEmailAddress" />
+            android:textColor="@color/black" />
 
         <ImageView
             android:id="@+id/imageView20"
@@ -198,6 +198,7 @@
             android:layout_marginEnd="152dp"
             android:layout_marginBottom="124dp"
             android:text="Social Media Acc"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

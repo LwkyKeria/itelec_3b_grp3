@@ -1,4 +1,4 @@
-package com.example.barngyapp;
+package com.example.barngyapp.backends;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+import com.example.barngyapp.R;
 
 
 public class nextforapplication extends AppCompatActivity {
