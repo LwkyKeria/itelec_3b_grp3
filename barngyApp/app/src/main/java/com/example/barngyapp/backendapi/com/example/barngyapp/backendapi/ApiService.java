@@ -1,4 +1,4 @@
-package  com.example.barngyapp.backendapi;
+package com.example.barngyapp.backendapi;
 
 import retrofit2.Call;
 import retrofit2.http.Headers;
@@ -12,4 +12,7 @@ public interface ApiService {
 
     @POST("routes/android_api_login.php")
     Call<ApiResponse> loginUser(@Body User user);
+
+    @POST("routes/android_createAccount.php")
+    Call<ApiResponse> createUser(@Body registerUser user);  // New endpoint for account creation
 }
