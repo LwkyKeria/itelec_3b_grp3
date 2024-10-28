@@ -27,8 +27,8 @@ namespace Barangay_Web_App2
                 return;
             }
 
-            // API URL (point to your actual PHP API)
-            string apiUrl = "https://barangayapp.x10.mx/api/routes/create_event.php";
+            // API URL 
+            string apiUrl = "https://barangayapp.x10.mx/api/routes/create_event_web.php";
 
             // Send HTTP request to the PHP API
             using (HttpClient client = new HttpClient())

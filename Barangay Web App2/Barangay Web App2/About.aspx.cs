@@ -19,7 +19,7 @@ namespace Barangay_Web_App2
 
         private async Task FetchAndDisplayOfficials(string searchQuery = "")
         {
-            string apiUrl = "https://barangayapp.x10.mx/api/config/fetchOfficials.php"; // PHP API URL for fetching officials
+            string apiUrl = "https://barangayapp.x10.mx/api/config/fetchOfficials_web.php"; // PHP API URL for fetching officials
 
             try
             {
