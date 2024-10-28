@@ -59,7 +59,7 @@ namespace Barangay_Web_App2
             string position = txtOfficialPosition.Text;
             string contact = txtContactInfo.Text;
 
-            string apiUrl = "https://barangayapp.x10.mx/api/routes/insertOfficial.php"; // PHP API URL for inserting official
+            string apiUrl = "https://barangayapp.x10.mx/api/routes/insertOfficial_web.php"; // PHP API URL for inserting official
 
             try
             {
@@ -111,7 +111,7 @@ namespace Barangay_Web_App2
         protected async void BtnDeleteOfficial_Click(object sender, CommandEventArgs e)
         {
             int officialId = Convert.ToInt32(e.CommandArgument); // Get the official_id from the button argument
-            string apiUrl = "https://barangayapp.x10.mx/api/routes/deleteOfficials.php"; // PHP API URL for deleting official
+            string apiUrl = "https://barangayapp.x10.mx/api/routes/deleteOfficials_web.php"; // PHP API URL for deleting official
 
             try
             {
