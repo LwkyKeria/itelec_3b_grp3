@@ -9,77 +9,22 @@
     android:textAlignment="viewStart"
     tools:context=".backends.loginn">
 
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="160dp"
-        android:layout_height="39dp"
-        android:text="@string/Welcome"
+        android:layout_width="166dp"
+        android:layout_height="63dp"
+        android:text="WELCOME ADMIN"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
-
-    <Button
-        android:id="@+id/btnCreate"
-        android:layout_width="125dp"
-        android:layout_height="58dp"
-        android:backgroundTint="#8EBBFF"
-        android:onClick="LaunchSettings"
-        android:text="@string/create"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.79"
-        tools:ignore="TextSizeCheck" />
-
-    <Button
-        android:id="@+id/admin"
-        android:layout_width="125dp"
-        android:layout_height="58dp"
-        android:backgroundTint="#8EBBFF"
-        android:onClick="LaunchSettings"
-        android:text="Admin"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937"
-        tools:ignore="TextSizeCheck" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/don_t_have_an_account"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.823" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="For admin login only!"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962" />
+        app:layout_constraintVertical_bias="0.315" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -89,10 +34,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.694">
 
         <Button
-            android:id="@+id/btnLogin"
+            android:id="@+id/btnAdminLogin"
             android:layout_width="194dp"
             android:layout_height="65dp"
             android:layout_alignParentStart="true"
@@ -110,7 +56,7 @@
             tools:ignore="TextSizeCheck" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/etAdminPassword"
             android:layout_width="279dp"
             android:layout_height="53dp"
             android:layout_alignParentStart="true"
@@ -132,7 +78,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
-            android:id="@+id/username"
+            android:id="@+id/etAdminUsername"
             android:layout_width="282dp"
             android:layout_height="54dp"
             android:layout_alignParentStart="true"
@@ -157,7 +103,6 @@
             android:id="@+id/ivShowPassword"
             android:layout_width="27dp"
             android:layout_height="39dp"
-            android:layout_alignEnd="@+id/password"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"

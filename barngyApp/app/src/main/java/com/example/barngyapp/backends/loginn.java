@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.barngyapp.R;
+import com.example.barngyapp.adminapplicationAdapter.adminlogin;
 import com.example.barngyapp.backendapi.ApiService;
 import com.example.barngyapp.backendapi.RetrofitClient;
 import com.example.barngyapp.backendapi.User;
@@ -28,7 +29,6 @@ public class loginn extends AppCompatActivity {
     Button btnLogin, btncreate;
     ImageView ShowPassword;
     private boolean isPasswordVisible = false;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,9 @@ public class loginn extends AppCompatActivity {
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LaunchSettings(v); // Call LaunchSettings when the button is clicked
+                // Navigate directly to the 'createe' activity when btncreate is clicked
+                Intent intent = new Intent(loginn.this, createe.class);
+                startActivity(intent);
             }
         });
     }
@@ -118,8 +120,8 @@ public class loginn extends AppCompatActivity {
     }
 
     public void LaunchSettings(View view) {
-        // Create an Intent to launch the 'createe' activity
-        Intent intent = new Intent(loginn.this, createe.class); // Use the correct class name
+        // Create an Intent to launch the 'adminlogin' activity
+        Intent intent = new Intent(loginn.this, adminlogin.class); // Use the correct class name
         startActivity(intent);
     }
 }

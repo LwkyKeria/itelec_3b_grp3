@@ -15,6 +15,18 @@
         android:theme="@style/Theme.BarngyApp"
         tools:targetApi="31">
         <activity
+            android:name=".adminapplicationAdapter.adminlogin"
+            android:exported="false" />
+        <activity
+            android:name=".adminapplicationAdapter.AdminApplicationMain"
+            android:exported="false" />
+        <activity
+            android:name=".adminapplicationAdapter.adminservices"
+            android:exported="false" />
+        <activity
+            android:name=".adminapplicationAdapter.adminHomePage"
+            android:exported="false" />
+        <activity
             android:name=".backends.Status"
             android:exported="false" />
         <activity
