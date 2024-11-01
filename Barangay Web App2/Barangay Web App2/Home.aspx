@@ -119,6 +119,8 @@
 
                 <br /><br />
                 <asp:Button ID="SubmitEvent" Text="Submit Event" OnClick="SubmitEvent_Click" runat="server" />
+                <asp:Label ID="feedbackLabel" runat="server" ForeColor="Red" />
+
             </div>
         </div>
 

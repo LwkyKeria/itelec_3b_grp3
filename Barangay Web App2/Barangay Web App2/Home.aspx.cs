@@ -23,7 +23,7 @@ namespace Barangay_Web_App2
             if (string.IsNullOrEmpty(title) || string.IsNullOrEmpty(description) ||
                 string.IsNullOrEmpty(date) || string.IsNullOrEmpty(time) || string.IsNullOrEmpty(location))
             {
-                Response.Write("<script>alert('Please fill in all fields.');</script>");
+                feedbackLabel.Text = "Please fill in all fields.";
                 return;
             }
 
@@ -49,16 +49,16 @@ namespace Barangay_Web_App2
 
                     if (response.IsSuccessStatusCode)
                     {
-                        Response.Write("<script>alert('Event posted successfully!');</script>");
+                        feedbackLabel.Text = "Event posted successfully!";
                     }
                     else
                     {
-                        Response.Write($"<script>alert('Error posting event: {apiResponse}');</script>");
+                        feedbackLabel.Text = $"Error posting event: {apiResponse}";
                     }
                 }
                 catch (Exception ex)
                 {
-                    Response.Write($"<script>alert('Error: {ex.Message}');</script>");
+                    feedbackLabel.Text = $"Error: {ex.Message}";
                 }
             }
         }
