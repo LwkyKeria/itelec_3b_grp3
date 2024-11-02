@@ -24,49 +24,49 @@ namespace Barangay_Web_App2
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// eventTitle control.
+        /// txtEventTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventTitle;
+        protected global::System.Web.UI.WebControls.TextBox txtEventTitle;
 
         /// <summary>
-        /// eventDescription control.
+        /// txtEventDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtEventDescription;
 
         /// <summary>
-        /// eventDate control.
+        /// txtEventDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventDate;
+        protected global::System.Web.UI.WebControls.TextBox txtEventDate;
 
         /// <summary>
-        /// eventTime control.
+        /// txtEventTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventTime;
+        protected global::System.Web.UI.WebControls.TextBox txtEventTime;
 
         /// <summary>
-        /// eventLocation control.
+        /// txtEventLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox eventLocation;
+        protected global::System.Web.UI.WebControls.TextBox txtEventLocation;
 
         /// <summary>
         /// SubmitEvent control.
@@ -78,12 +78,21 @@ namespace Barangay_Web_App2
         protected global::System.Web.UI.WebControls.Button SubmitEvent;
 
         /// <summary>
-        /// feedbackLabel control.
+        /// lblStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label feedbackLabel;
+        protected global::System.Web.UI.WebControls.Label lblStatus;
+
+        /// <summary>
+        /// EventsRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater EventsRepeater;
     }
 }
