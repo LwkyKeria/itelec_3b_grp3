@@ -36,39 +36,65 @@ public class AdminInfoActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         btnSubmitInfo = findViewById(R.id.btnSubmitInfo);
 
+        // Handle button click
         btnSubmitInfo.setOnClickListener(v -> {
             String address = etOfficeAddress.getText().toString().trim();
             String phone = etPhoneNumber.getText().toString().trim();
             String email = etEmail.getText().toString().trim();
 
-            if (TextUtils.isEmpty(address) || TextUtils.isEmpty(phone) || TextUtils.isEmpty(email)) {
-                Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show();
-                return;
-            }
+            // Validate input fields
+            if (!isValidInput(address, phone, email)) return;
 
+            // Submit data to server
             submitBarangayInfo(address, phone, email);
         });
+    }
+
+    private boolean isValidInput(String address, String phone, String email) {
+        // Validate all input fields
+        if (TextUtils.isEmpty(address)) {
+            Toast.makeText(this, "Office Address is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, "Phone Number is required", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Invalid Email Address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private void submitBarangayInfo(String address, String phone, String email) {
         ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
 
+        // Create a HashMap for the POST data
         HashMap<String, String> barangayInfo = new HashMap<>();
         barangayInfo.put("address", address);
         barangayInfo.put("phone", phone);
         barangayInfo.put("email", email);
 
+        // Call the API
         Call<ApiResponse> call = apiService.createBarangayInfo(barangayInfo);
 
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(AdminInfoActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.d("AdminInfoActivity", "Success: " + response.body().getMessage());
+                    ApiResponse apiResponse = response.body();
+                    if (apiResponse.isSuccess()) {
+                        Toast.makeText(AdminInfoActivity.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.d("AdminInfoActivity", "Success: " + apiResponse.getMessage());
+                        clearInputFields(); // Clear input fields on success
+                    } else {
+                        Toast.makeText(AdminInfoActivity.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("AdminInfoActivity", "Failed: " + apiResponse.getMessage());
+                    }
                 } else {
                     Log.e("AdminInfoActivity", "Failed: " + response.code());
-                    Toast.makeText(AdminInfoActivity.this, "Submission failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminInfoActivity.this, "Submission failed: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -78,5 +104,11 @@ public class AdminInfoActivity extends AppCompatActivity {
                 Toast.makeText(AdminInfoActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void clearInputFields() {
+        etOfficeAddress.setText("");
+        etPhoneNumber.setText("");
+        etEmail.setText("");
     }
 }
