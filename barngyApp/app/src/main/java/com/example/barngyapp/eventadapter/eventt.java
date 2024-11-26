@@ -1,64 +1,81 @@
 package com.example.barngyapp.eventadapter;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barngyapp.R;
+import com.example.barngyapp.backendapi.ApiService;
+import com.example.barngyapp.backendapi.RetrofitClient;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class eventt extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private EventAdapter eventAdapter;
-    private List<Event> eventList;
+    private TextView tvNoEvents, textEventLocation;
     private CalendarView calendarView;
-    private TextView textEventLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event);
 
-        // Initialize RecyclerView
+        // Initialize views
         recyclerView = findViewById(R.id.recyclerView_events);
+        tvNoEvents = findViewById(R.id.tvNoEvents);
+        textEventLocation = findViewById(R.id.text_event_location);
+        calendarView = findViewById(R.id.calendar_view);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Sample data to populate the RecyclerView
-        eventList = new ArrayList<>();
-        eventList.add(new Event("Music Concert", "2024-11-10", "Concert Hall"));
-        eventList.add(new Event("Art Exhibition", "2024-11-15", "City Art Gallery"));
-        eventList.add(new Event("Food Festival", "2024-11-20", "Town Square"));
-        eventList.add(new Event("Tech Conference", "2024-11-25", "Convention Center"));
-        eventList.add(new Event("Sports Meet", "2024-12-01", "Sports Arena"));
+        // Fetch and display events
+        fetchEvents();
 
-        eventAdapter = new EventAdapter(this, eventList);
-        recyclerView.setAdapter(eventAdapter);
-
-        // Initialize CalendarView and TextView
-        calendarView = findViewById(R.id.calendar_view);
-        textEventLocation = findViewById(R.id.text_event_location);
-
-        // Set up CalendarView date change listener
+        // Handle calendar date selection
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            String selectedDate = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth);
-            String location = getLocationForDate(selectedDate);
-            textEventLocation.setText("Event Location: " + (location != null ? location : "No event"));
+            String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
+            textEventLocation.setText("Selected Date: " + selectedDate);
         });
     }
 
-    // Method to get event location based on the selected date
-    private String getLocationForDate(String date) {
-        for (Event event : eventList) {
-            if (event.getDate().equals(date)) {
-                return event.getLocation();
+    private void fetchEvents() {
+        ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
+
+        Call<List<Event>> call = apiService.getEvents();
+
+        call.enqueue(new Callback<List<Event>>() {
+            @Override
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<Event> events = response.body();
+                    for (Event event : events) {
+                        Log.d("fetchEvents", "Title: " + event.getTitle() +
+                                ", Location: " + event.getLocation() +
+                                ", Date: " + event.getDate());
+                    }
+                    // Optionally, bind this list to a RecyclerView adapter
+                } else {
+                    Log.e("fetchEvents", "Failed to fetch events. Response: " + response.errorBody());
+                    Toast.makeText(eventt.this, "Failed to fetch events.", Toast.LENGTH_SHORT).show();
+                }
             }
-        }
-        return null; // Return null if no matching event is found
+
+            @Override
+            public void onFailure(Call<List<Event>> call, Throwable t) {
+                Log.e("fetchEvents", "Error: " + t.getMessage(), t);
+                Toast.makeText(eventt.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

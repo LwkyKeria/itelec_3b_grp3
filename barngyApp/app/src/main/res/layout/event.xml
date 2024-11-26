@@ -1,46 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2F3651"
-    android:padding="16dp">
-
-    <!-- RecyclerView for Events List occupying half of the screen -->
-
-    <!-- CalendarView for selecting event dates -->
+    android:padding="16dp"
+    android:background="#2F3651">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_events"
-        android:layout_width="394dp"
-        android:layout_height="251dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="18dp"
-        android:layout_weight="10"
-        android:clipToPadding="false"
-        android:padding="16dp"
-        android:scrollbars="vertical"
-        android:paddingBottom="8dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/tvNoEvents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recyclerView_events"
+        android:visibility="gone"
+        android:text="No events found"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
 
     <CalendarView
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/recyclerView_events"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@id/tvNoEvents" />
 
-    <!-- TextView to display the event location -->
     <TextView
         android:id="@+id/text_event_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/calendar_view"
-        android:layout_marginTop="16dp"
         android:text="Event Location: [Location Name]"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:textSize="16sp" />
 
 </RelativeLayout>

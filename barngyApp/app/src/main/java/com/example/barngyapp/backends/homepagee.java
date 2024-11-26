@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,18 +20,18 @@ import com.example.barngyapp.eventadapter.eventt;
 import java.util.ArrayList;
 import java.util.List;
 
-public class homepagee extends AppCompatActivity { // Class name updated to start with uppercase
+public class homepagee extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private AnnouncementAdapter adapter;
-    private List<announcement> announcementList; // Change announcement to Announcement
+    private List<announcement> announcementList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.homepage); // Ensure this layout exists
 
+        // Initialize the RecyclerView and the adapter
         recyclerView = findViewById(R.id.recyclerView); // Make sure this ID exists
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -49,6 +48,7 @@ public class homepagee extends AppCompatActivity { // Class name updated to star
         adapter = new AnnouncementAdapter(announcementList);
         recyclerView.setAdapter(adapter);
 
+        // Apply system bars insets for padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -60,7 +60,8 @@ public class homepagee extends AppCompatActivity { // Class name updated to star
     }
 
     private void setupClickListeners() {
-        RelativeLayout rlservice = findViewById(R.id.service); // Ensure these IDs exist
+        // Ensure the IDs are correct in your layout file
+        RelativeLayout rlservice = findViewById(R.id.service);
         rlservice.setOnClickListener(v -> {
             Toast.makeText(homepagee.this, "Services", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(homepagee.this, servicess.class); // Ensure Services.class exists
@@ -82,6 +83,12 @@ public class homepagee extends AppCompatActivity { // Class name updated to star
         RelativeLayout rlevent = findViewById(R.id.event);
         rlevent.setOnClickListener(v -> {
             Intent intent = new Intent(homepagee.this, eventt.class); // Ensure Eventt.class exists
+            startActivity(intent);
+        });
+
+        RelativeLayout rlstatus = findViewById(R.id.statusR); // Fix the reference for statusR
+        rlstatus.setOnClickListener(v -> {
+            Intent intent = new Intent(homepagee.this, Status.class); // Ensure Status.class exists
             startActivity(intent);
         });
     }
