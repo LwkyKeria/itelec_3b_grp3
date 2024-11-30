@@ -48,7 +48,7 @@ namespace Barangay_Web_App2
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventDate;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEventDate;
 
         /// <summary>
         /// txtEventTime control.
@@ -57,7 +57,7 @@ namespace Barangay_Web_App2
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEventTime;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtEventTime;
 
         /// <summary>
         /// txtEventLocation control.
@@ -94,5 +94,14 @@ namespace Barangay_Web_App2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater EventsRepeater;
+
+        /// <summary>
+        /// noEventsMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl noEventsMessage;
     }
 }

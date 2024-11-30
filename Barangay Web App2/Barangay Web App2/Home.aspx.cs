@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 
 namespace Barangay_Web_App2
 {
@@ -19,8 +19,7 @@ namespace Barangay_Web_App2
 
         private async Task FetchAndDisplayEvents()
         {
-            string apiUrl = "https://barangayapp.x10.mx/api/routes/fetchEvents_web.php"; // PHP API URL for fetching events
-
+            string apiUrl = "https://barangayapp.x10.mx/api/routes/fetchEvents_web.php";
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -29,34 +28,67 @@ namespace Barangay_Web_App2
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonResponse = await response.Content.ReadAsStringAsync();
-                        List<Event> events = JsonConvert.DeserializeObject<List<Event>>(jsonResponse);
 
-                        EventsRepeater.DataSource = events;
-                        EventsRepeater.DataBind();
+                        // Deserialize into a wrapper object
+                        var responseObject = JsonConvert.DeserializeObject<FetchEventsResponse>(jsonResponse);
+
+                        if (responseObject != null && responseObject.Status == "success" && responseObject.Data.Count > 0)
+                        {
+                            EventsRepeater.DataSource = responseObject.Data;
+                            EventsRepeater.DataBind();
+                            noEventsMessage.Visible = false; // Hide "No events" message
+                        }
+                        else
+                        {
+                            EventsRepeater.DataSource = null;
+                            EventsRepeater.DataBind();
+                            noEventsMessage.Visible = true; // Show "No events" message
+                        }
                     }
                     else
                     {
-                        lblStatus.Text = "Failed to fetch events.";
-                        lblStatus.ForeColor = System.Drawing.Color.Red;
+                        lblStatus.Text = "Failed to fetch events. Please try again later.";
+                        noEventsMessage.Visible = true; // Show "No events" message
                     }
                 }
             }
             catch (Exception ex)
             {
                 lblStatus.Text = $"Error fetching events: {ex.Message}";
-                lblStatus.ForeColor = System.Drawing.Color.Red;
+                noEventsMessage.Visible = true; // Show "No events" message
             }
         }
 
-        protected async void SubmitEvent_Click(object sender, EventArgs e)
+        // Wrapper class for deserializing the JSON response
+        public class FetchEventsResponse
         {
-            string title = txtEventTitle.Text.Trim();
-            string description = txtEventDescription.Text.Trim();
-            string date = txtEventDate.Text.Trim();
-            string time = txtEventTime.Text.Trim();
-            string location = txtEventLocation.Text.Trim();
+            public string Status { get; set; }
+            public List<Event> Data { get; set; }
+        }
 
-            string apiUrl = "https://barangayapp.x10.mx/api/routes/insertEvent_web.php"; // PHP API URL for inserting event
+        // Event class for individual event objects
+        public class Event
+        {
+            public int Event_id { get; set; }
+            public string Event_title { get; set; }
+            public string Event_description { get; set; }
+            public string Event_date { get; set; }
+            public string Event_time { get; set; }
+            public string Event_location { get; set; }
+            public DateTime Created_time { get; set; }
+        }
+
+
+
+        protected async void BtnAddEvent_Click(object sender, EventArgs e)
+        {
+            string title = txtEventTitle.Text;
+            string description = txtEventDescription.Text;
+            string date = txtEventDate.Value; // Correct usage for HtmlInputGenericControl
+            string time = txtEventTime.Value; // Correct usage for HtmlInputGenericControl
+            string location = txtEventLocation.Text;
+
+            string apiUrl = "https://barangayapp.x10.mx/api/routes/insertEvent_web.php";
 
             try
             {
@@ -69,45 +101,37 @@ namespace Barangay_Web_App2
                     new KeyValuePair<string, string>("eventLocation", location)
                 });
 
-                using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) })
+                using (HttpClient client = new HttpClient())
                 {
                     HttpResponseMessage response = await client.PostAsync(apiUrl, data);
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-
-                    var jsonResponse = JsonConvert.DeserializeObject<Dictionary<string, string>>(apiResponse);
-                    if (jsonResponse.ContainsKey("message"))
+                    if (response.IsSuccessStatusCode)
                     {
-                        lblStatus.Text = jsonResponse["message"];
-                        lblStatus.ForeColor = System.Drawing.Color.Green;
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        var jsonResponse = JsonConvert.DeserializeObject<Dictionary<string, string>>(apiResponse);
 
-                        // Clear input fields after successful submission
+                        lblStatus.Text = jsonResponse.ContainsKey("message")
+                            ? jsonResponse["message"]
+                            : "Event added successfully.";
+
+                        // Clear input fields
                         txtEventTitle.Text = "";
                         txtEventDescription.Text = "";
-                        txtEventDate.Text = "";
-                        txtEventTime.Text = "";
+                        txtEventDate.Value = ""; // Clear HtmlInputGenericControl
+                        txtEventTime.Value = ""; // Clear HtmlInputGenericControl
                         txtEventLocation.Text = "";
-                    }
 
-                    // Refresh event list after successful addition
-                    await FetchAndDisplayEvents();
+                        await FetchAndDisplayEvents();
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Failed to add the event. Please try again.";
+                    }
                 }
             }
             catch (Exception ex)
             {
                 lblStatus.Text = $"Error adding event: {ex.Message}";
-                lblStatus.ForeColor = System.Drawing.Color.Red;
             }
         }
-    }
-
-    public class Event
-    {
-        public int Event_id { get; set; }
-        public string Event_title { get; set; }
-        public string Event_description { get; set; }
-        public string Event_date { get; set; }
-        public string Event_time { get; set; }
-        public string Event_location { get; set; }
-        public DateTime Created_time { get; set; }
     }
 }

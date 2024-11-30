@@ -104,31 +104,11 @@
             bottom: 0;
         }
 
-        #feedbackLabel {
-            margin-top: 15px;
-            font-size: 16px;
+        .status-message {
             color: red;
+            font-weight: bold;
         }
     </style>
-    <script type="text/javascript">
-        // Client-side validation and submission feedback
-        function validateForm() {
-            var title = document.getElementById("<%= txtEventTitle.ClientID %>").value.trim();
-            var description = document.getElementById("<%= txtEventDescription.ClientID %>").value.trim();
-            var date = document.getElementById("<%= txtEventDate.ClientID %>").value.trim();
-            var time = document.getElementById("<%= txtEventTime.ClientID %>").value.trim();
-            var location = document.getElementById("<%= txtEventLocation.ClientID %>").value.trim();
-
-            if (!title || !description || !date || !time || !location) {
-                alert("Please fill in all fields.");
-                return false;
-            }
-
-            document.getElementById("<%= SubmitEvent.ClientID %>").disabled = true;
-            document.getElementById("<%= lblStatus.ClientID %>").innerText = "Submitting...";
-            return true;
-        }
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -150,22 +130,23 @@
             <div class="event-form">
                 <h2>Create New Event</h2>
                 <label for="txtEventTitle">Event Title:</label>
-                <asp:TextBox ID="txtEventTitle" runat="server" />
+                <asp:TextBox ID="txtEventTitle" runat="server" placeholder="Enter event title" />
 
                 <label for="txtEventDescription">Event Description:</label>
-                <asp:TextBox ID="txtEventDescription" runat="server" TextMode="MultiLine" Rows="4" />
+                <asp:TextBox ID="txtEventDescription" runat="server" TextMode="MultiLine" Rows="4" placeholder="Enter event description" />
 
                 <label for="txtEventDate">Event Date:</label>
-                <asp:TextBox ID="txtEventDate" runat="server" TextMode="Date" />
+                <input type="date" id="txtEventDate" runat="server" />
 
                 <label for="txtEventTime">Event Time:</label>
-                <asp:TextBox ID="txtEventTime" runat="server" TextMode="Time" />
+                <input type="time" id="txtEventTime" runat="server" />
+
 
                 <label for="txtEventLocation">Event Location:</label>
-                <asp:TextBox ID="txtEventLocation" runat="server" />
+                <asp:TextBox ID="txtEventLocation" runat="server" placeholder="Enter event location" />
 
                 <br /><br />
-                <asp:Button ID="SubmitEvent" Text="Submit Event" OnClientClick="return validateForm();" OnClick="SubmitEvent_Click" runat="server" />
+                <asp:Button ID="SubmitEvent" Text="Submit Event" OnClick="BtnAddEvent_Click" runat="server" />
                 <asp:Label ID="lblStatus" runat="server" CssClass="status-message" />
             </div>
 
@@ -173,35 +154,39 @@
             <div class="event-list">
                 <h2>Events List</h2>
                 <asp:Repeater ID="EventsRepeater" runat="server">
-                    <HeaderTemplate>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Location</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <tr>
-                            <td><%# Eval("Event_title") %></td>
-                            <td><%# Eval("Event_description") %></td>
-                            <td><%# Eval("Event_date") %></td>
-                            <td><%# Eval("Event_time") %></td>
-                            <td><%# Eval("Event_location") %></td>
-                        </tr>
-                    </ItemTemplate>
-                    <FooterTemplate>
-                            </tbody>
-                        </table>
-                    </FooterTemplate>
-                </asp:Repeater>
-            </div>
-        </div>
+    <HeaderTemplate>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+    </HeaderTemplate>
+    <ItemTemplate>
+        <tr>
+            <td><%# Eval("Event_title") %></td>
+            <td><%# Eval("Event_description") %></td>
+            <td><%# Eval("Event_date") %></td>
+            <td><%# Eval("Event_time") %></td>
+            <td><%# Eval("Event_location") %></td>
+        </tr>
+    </ItemTemplate>
+    <FooterTemplate>
+            </tbody>
+        </table>
+    </FooterTemplate>
+</asp:Repeater>
+
+<!-- Placeholder for no data -->
+<div id="noEventsMessage" runat="server" style="text-align:center; padding:20px; color:gray; display:none;">
+    No events found. Try creating one!
+</div>
+
 
         <div id="footer">
             &copy; 2024 Barangay Web App - Jasper Company.
