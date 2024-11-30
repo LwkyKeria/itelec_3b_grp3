@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.barngyapp.R;
-import com.example.barngyapp.adminapplicationAdapter.adminlogin;
+import com.example.barngyapp.adminapplicationAdapter.adminHomePage;
 import com.example.barngyapp.backendapi.ApiService;
 import com.example.barngyapp.backendapi.RetrofitClient;
 import com.example.barngyapp.backendapi.User;
@@ -30,6 +30,10 @@ public class loginn extends AppCompatActivity {
     ImageView ShowPassword;
     private boolean isPasswordVisible = false;
 
+    // Hardcoded admin credentials
+    private static final String ADMIN_USERNAME = "admin";
+    private static final String ADMIN_PASSWORD = "admin123";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +48,19 @@ public class loginn extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String loginUser = etLoginUser.getText().toString();
-                String loginPass = etLoginPass.getText().toString();
+                String loginUser = etLoginUser.getText().toString().trim();
+                String loginPass = etLoginPass.getText().toString().trim();
 
                 if (!loginUser.isEmpty() && !loginPass.isEmpty()) {
-                    loginUser(loginUser, loginPass);
+                    if (loginUser.equals(ADMIN_USERNAME) && loginPass.equals(ADMIN_PASSWORD)) {
+                        // Navigate to Admin Homepage
+                        Intent intent = new Intent(loginn.this, adminHomePage.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        // Proceed with user login API
+                        loginUser(loginUser, loginPass);
+                    }
                 } else {
                     Toast.makeText(loginn.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
                 }
@@ -77,7 +89,7 @@ public class loginn extends AppCompatActivity {
         btncreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigate directly to the 'createe' activity when btncreate is clicked
+                // Navigate to the 'createe' activity
                 Intent intent = new Intent(loginn.this, createe.class);
                 startActivity(intent);
             }
@@ -100,7 +112,7 @@ public class loginn extends AppCompatActivity {
                     ApiResponse apiResponse = response.body();
                     if (apiResponse.isSuccess()) {
                         Toast.makeText(loginn.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(loginn.this, homepagee.class);
+                        Intent intent = new Intent(loginn.this, homepagee.class); // Navigate to user homepage
                         startActivity(intent);
                     } else {
                         Toast.makeText(loginn.this, "Login Failed: " + apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -117,11 +129,5 @@ public class loginn extends AppCompatActivity {
                 etLoginPass.setText("");
             }
         });
-    }
-
-    public void LaunchSettings(View view) {
-        // Create an Intent to launch the 'adminlogin' activity
-        Intent intent = new Intent(loginn.this, adminlogin.class); // Use the correct class name
-        startActivity(intent);
     }
 }

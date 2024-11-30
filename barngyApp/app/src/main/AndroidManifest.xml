@@ -15,7 +15,10 @@
         android:theme="@style/Theme.BarngyApp"
         tools:targetApi="31">
         <activity
-            android:name=".adminapplicationAdapter.adminlogin"
+            android:name=".adminapplicationAdapter.AdminInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".adminapplicationAdapter.admin_eventmaker"
             android:exported="false" />
         <activity
             android:name=".adminapplicationAdapter.AdminApplicationMain"
@@ -25,7 +28,15 @@
             android:exported="false" />
         <activity
             android:name=".adminapplicationAdapter.adminHomePage"
-            android:exported="false" />
+            android:exported="false" /> <!-- Backend activities -->
+        <activity
+            android:name=".backends.viewapplication"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".backends.viewappointment"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".backends.Status"
             android:exported="false" />
@@ -55,7 +66,7 @@
             android:exported="false" />
         <activity
             android:name=".backends.createe"
-            android:exported="false" />
+            android:exported="false" /> <!-- Login activity (exported for launching the app) -->
         <activity
             android:name=".backends.loginn"
             android:exported="true">

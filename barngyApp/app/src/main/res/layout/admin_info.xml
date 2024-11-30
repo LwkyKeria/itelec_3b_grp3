@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#2F3651"
+    android:textColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Office Address -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Barangay Office Address"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp" />
+        <EditText
+            android:id="@+id/etOfficeAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Office Address"
+            android:inputType="textMultiLine"
+            android:textColorHint="@color/white"
+            android:lines="3"
+            android:gravity="top" />
+
+        <!-- Office Phone Number -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Office Phone Number"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Phone Number"
+            android:textColorHint="@color/white"
+            android:inputType="phone"
+            android:minHeight="48dp" />
+
+        <!-- Email Address -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email Address"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email Address"
+            android:textColorHint="@color/white"
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp" />
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnSubmitInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Info"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</ScrollView>
