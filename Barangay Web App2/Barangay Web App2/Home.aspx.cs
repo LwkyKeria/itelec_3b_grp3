@@ -29,44 +29,41 @@ namespace Barangay_Web_App2
                     {
                         string jsonResponse = await response.Content.ReadAsStringAsync();
 
-                        // Deserialize into a wrapper object
                         var responseObject = JsonConvert.DeserializeObject<FetchEventsResponse>(jsonResponse);
 
                         if (responseObject != null && responseObject.Status == "success" && responseObject.Data.Count > 0)
                         {
                             EventsRepeater.DataSource = responseObject.Data;
                             EventsRepeater.DataBind();
-                            noEventsMessage.Visible = false; // Hide "No events" message
+                            noEventsMessage.Visible = false;
                         }
                         else
                         {
                             EventsRepeater.DataSource = null;
                             EventsRepeater.DataBind();
-                            noEventsMessage.Visible = true; // Show "No events" message
+                            noEventsMessage.Visible = true;
                         }
                     }
                     else
                     {
                         lblStatus.Text = "Failed to fetch events. Please try again later.";
-                        noEventsMessage.Visible = true; // Show "No events" message
+                        noEventsMessage.Visible = true;
                     }
                 }
             }
             catch (Exception ex)
             {
                 lblStatus.Text = $"Error fetching events: {ex.Message}";
-                noEventsMessage.Visible = true; // Show "No events" message
+                noEventsMessage.Visible = true;
             }
         }
 
-        // Wrapper class for deserializing the JSON response
         public class FetchEventsResponse
         {
             public string Status { get; set; }
             public List<Event> Data { get; set; }
         }
 
-        // Event class for individual event objects
         public class Event
         {
             public int Event_id { get; set; }
@@ -78,14 +75,12 @@ namespace Barangay_Web_App2
             public DateTime Created_time { get; set; }
         }
 
-
-
         protected async void BtnAddEvent_Click(object sender, EventArgs e)
         {
             string title = txtEventTitle.Text;
             string description = txtEventDescription.Text;
-            string date = txtEventDate.Value; // Correct usage for HtmlInputGenericControl
-            string time = txtEventTime.Value; // Correct usage for HtmlInputGenericControl
+            string date = txtEventDate.Value;
+            string time = txtEventTime.Value;
             string location = txtEventLocation.Text;
 
             string apiUrl = "https://barangayapp.x10.mx/api/routes/insertEvent_web.php";
@@ -113,11 +108,10 @@ namespace Barangay_Web_App2
                             ? jsonResponse["message"]
                             : "Event added successfully.";
 
-                        // Clear input fields
                         txtEventTitle.Text = "";
                         txtEventDescription.Text = "";
-                        txtEventDate.Value = ""; // Clear HtmlInputGenericControl
-                        txtEventTime.Value = ""; // Clear HtmlInputGenericControl
+                        txtEventDate.Value = "";
+                        txtEventTime.Value = "";
                         txtEventLocation.Text = "";
 
                         await FetchAndDisplayEvents();

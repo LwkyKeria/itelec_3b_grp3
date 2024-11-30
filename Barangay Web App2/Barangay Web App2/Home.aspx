@@ -154,39 +154,40 @@
             <div class="event-list">
                 <h2>Events List</h2>
                 <asp:Repeater ID="EventsRepeater" runat="server">
-    <HeaderTemplate>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Location</th>
-                </tr>
-            </thead>
-            <tbody>
-    </HeaderTemplate>
-    <ItemTemplate>
-        <tr>
-            <td><%# Eval("Event_title") %></td>
-            <td><%# Eval("Event_description") %></td>
-            <td><%# Eval("Event_date") %></td>
-            <td><%# Eval("Event_time") %></td>
-            <td><%# Eval("Event_location") %></td>
-        </tr>
-    </ItemTemplate>
-    <FooterTemplate>
-            </tbody>
-        </table>
-    </FooterTemplate>
-</asp:Repeater>
+                    <HeaderTemplate>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <tr>
+                            <td><%# Eval("Event_title") %></td>
+                            <td><%# Eval("Event_description") %></td>
+                            <td><%# Eval("Event_date") %></td>
+                            <td><%# Eval("Event_time") %></td>
+                            <td><%# Eval("Event_location") %></td>
+                        </tr>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                            </tbody>
+                        </table>
+                    </FooterTemplate>
+                </asp:Repeater>
 
-<!-- Placeholder for no data -->
-<div id="noEventsMessage" runat="server" style="text-align:center; padding:20px; color:gray; display:none;">
-    No events found. Try creating one!
-</div>
-
+                <!-- Placeholder for no data -->
+                <div id="noEventsMessage" runat="server" style="text-align:center; padding:20px; color:gray; display:none;">
+                    No events found. Try creating one!
+                </div>
+            </div>
+        </div>
 
         <div id="footer">
             &copy; 2024 Barangay Web App - Jasper Company.
