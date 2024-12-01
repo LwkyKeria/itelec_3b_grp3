@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Requests.aspx.cs" Inherits="Barangay_Web_App2.Requests" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Requests.aspx.cs" Inherits="Barangay_Web_App2.Requests" Async="true" %>
+
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,6 +14,14 @@
         </div>
 
         <div id="content">
+            <!-- Loading Indicator -->
+            <div id="loadingMessage" runat="server" style="text-align: center; padding: 20px; display: none;">
+                Loading requests, please wait...
+            </div>
+
+            <!-- Feedback Status -->
+            <asp:Label ID="lblStatus" runat="server" CssClass="status-message" />
+
             <table>
                 <thead>
                     <tr>
@@ -24,17 +33,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%-- Placeholder for dynamic request data --%>
-                    <tr>
-                        <td>1</td>
-                        <td>Joshua B. Dulla</td>
-                        <td>Barangay Clearance</td>
-                        <td>Pending</td>
-                        <td>
-                            <button class="approve">Approve</button>
-                            <button class="reject">Reject</button>
-                        </td>
-                    </tr>
+                    <asp:Repeater ID="RequestsRepeater" runat="server">
+                        <ItemTemplate>
+                            <tr>
+                                <td><%# Eval("RequestID") %></td>
+                                <td><%# Eval("ResidentName") %></td>
+                                <td><%# Eval("DocumentName") %></td>
+                                <td><%# Eval("Status") %></td>
+                                <td>
+                                    <asp:Button ID="ApproveButton" runat="server" Text="Approve" CssClass="approve"
+                                        CommandArgument='<%# Eval("RequestID") %>' OnClick="ApproveRequest" />
+                                    <asp:Button ID="RejectButton" runat="server" Text="Reject" CssClass="reject"
+                                        CommandArgument='<%# Eval("RequestID") %>' OnClick="RejectRequest" />
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </tbody>
             </table>
         </div>

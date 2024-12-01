@@ -153,6 +153,7 @@
     <Content Include="Officials.aspx" />
     <Content Include="Requests.aspx" />
     <Content Include="Residents.aspx" />
+    <Content Include="styles\home.css" />
     <Content Include="styles\request.css" />
     <Content Include="Web.config" />
   </ItemGroup>
