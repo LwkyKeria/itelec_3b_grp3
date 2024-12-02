@@ -22,7 +22,8 @@
             android:exported="false" />
         <activity
             android:name=".adminapplicationAdapter.AdminApplicationMain"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".adminapplicationAdapter.adminservices"
             android:exported="false" />
