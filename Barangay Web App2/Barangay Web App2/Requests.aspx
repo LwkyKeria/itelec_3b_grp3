@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Requests.aspx.cs" Inherits="Barangay_Web_App2.Requests" Async="true" %>
 
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -15,42 +14,56 @@
 
         <div id="content">
             <!-- Loading Indicator -->
-            <div id="loadingMessage" runat="server" style="text-align: center; padding: 20px; display: none;">
+            <div id="loadingMessage" runat="server" class="loading-message" style="display: none;">
                 Loading requests, please wait...
             </div>
 
             <!-- Feedback Status -->
             <asp:Label ID="lblStatus" runat="server" CssClass="status-message" />
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Request ID</th>
-                        <th>Resident Name</th>
-                        <th>Document Requested</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <asp:Repeater ID="RequestsRepeater" runat="server">
-                        <ItemTemplate>
-                            <tr>
-                                <td><%# Eval("RequestID") %></td>
-                                <td><%# Eval("ResidentName") %></td>
-                                <td><%# Eval("DocumentName") %></td>
-                                <td><%# Eval("Status") %></td>
-                                <td>
-                                    <asp:Button ID="ApproveButton" runat="server" Text="Approve" CssClass="approve"
-                                        CommandArgument='<%# Eval("RequestID") %>' OnClick="ApproveRequest" />
-                                    <asp:Button ID="RejectButton" runat="server" Text="Reject" CssClass="reject"
-                                        CommandArgument='<%# Eval("RequestID") %>' OnClick="RejectRequest" />
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </tbody>
-            </table>
+            <!-- Search bar -->
+            <div id="searchContainer">
+                <asp:TextBox ID="txtSearch" runat="server" CssClass="searchBox" placeholder="Search by name or document..." />
+                <asp:Button ID="BtnSearch" runat="server" Text="Search" CssClass="searchButton" OnClick="BtnSearch_Click" />
+            </div>
+
+            <!-- Requests Table -->
+            <asp:PlaceHolder ID="RequestsContainer" runat="server">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Resident Name</th>
+                            <th>Document Requested</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="RequestsRepeater" runat="server">
+                            <ItemTemplate>
+                                <tr>
+                                    <td><%# Eval("RequestId") %></td>
+                                    <td><%# Eval("FirstName") %> <%# Eval("LastName") %></td>
+                                    <td><%# Eval("DocumentName") %></td>
+                                    <td>
+                                        <%# Eval("Status") == null ? "Pending" : Eval("Status") %>
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="ApproveButton" runat="server" Text="Approve" CssClass="approveButton"
+                                            CommandArgument='<%# Eval("RequestId") %>' OnClick="ApproveRequestAsync" />
+                                        <asp:Button ID="RejectButton" runat="server" Text="Reject" CssClass="rejectButton"
+                                            CommandArgument='<%# Eval("RequestId") %>' OnClick="RejectRequestAsync" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
+            </asp:PlaceHolder>
+
+            <!-- Empty State -->
+            <asp:Label ID="NoRequestsMessage" runat="server" Text="No requests found." CssClass="no-requests-message" Visible="false" />
         </div>
     </form>
 </body>
