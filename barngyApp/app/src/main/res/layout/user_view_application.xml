@@ -1,7 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- user_view_application.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#2F3651">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Add other views if needed -->
+
+    <!-- ListView for displaying the applications -->
+    <ListView
+        android:id="@+id/listViewApplications"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
