@@ -1,14 +1,7 @@
 package com.example.barngyapp.backendapi;
 
-import com.example.barngyapp.eventadapter.Event;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 

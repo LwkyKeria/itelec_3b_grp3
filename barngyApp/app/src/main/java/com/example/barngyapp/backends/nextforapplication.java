@@ -17,7 +17,7 @@ import com.example.barngyapp.backendapi.ApiService;
 import com.example.barngyapp.backendapi.DocumentRequest;
 import com.example.barngyapp.backendapi.RetrofitClient;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -57,53 +57,65 @@ public class nextforapplication extends AppCompatActivity {
 
         // Retrieve the user ID from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-        String userId = sharedPreferences.getString("user_id", "Not Available");
+        String userIdString = sharedPreferences.getString("user_id", null); // Using null to check if not available
 
-        if ("Not Available".equals(userId)) {
+        if (userIdString == null) {
             userIdTextView.setText("User ID: Not Available");
             Toast.makeText(this, "User is not logged in. Please log in first.", Toast.LENGTH_SHORT).show();
         } else {
-            userIdTextView.setText("User ID: " + userId);
-        }
+            try {
+                // Convert userId to Integer
+                int userId = Integer.parseInt(userIdString);
+                userIdTextView.setText("User ID: " + userId);
 
-        // Handle the request submission when the button is clicked
-        btnSendRequest.setOnClickListener(v -> {
-            String reason = edtReason.getText().toString();
-            if (!reason.isEmpty() && selectedDocuments != null && !selectedDocuments.isEmpty()) {
-                sendDocumentRequest(userId, selectedDocuments, reason);
-            } else {
-                Toast.makeText(nextforapplication.this, "Please provide a reason and select documents.", Toast.LENGTH_SHORT).show();
+                // Handle the request submission when the button is clicked
+                btnSendRequest.setOnClickListener(v -> {
+                    String reason = edtReason.getText().toString();
+                    if (!reason.isEmpty() && selectedDocuments != null && !selectedDocuments.isEmpty()) {
+                        sendDocumentRequest(userId, selectedDocuments, reason);
+                    } else {
+                        Toast.makeText(nextforapplication.this, "Please provide a reason and select documents.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            } catch (NumberFormatException e) {
+                userIdTextView.setText("Invalid User ID");
+                Log.e("DocumentRequest", "Invalid user ID format: " + userIdString);
             }
-        });
+        }
     }
 
-    private void sendDocumentRequest(String userId, List<String> documentIds, String reason) {
-        // Create a new DocumentRequest object with the provided data
+    private void sendDocumentRequest(int userId, List<String> selectedDocuments, String reason) {
+        List<Integer> documentIds = new ArrayList<>();
+        for (String docName : selectedDocuments) {
+            int documentId = getDocumentIdByName(docName);
+            if (documentId != -1) {
+                documentIds.add(documentId);
+            }
+        }
+
+        if (documentIds.isEmpty()) {
+            Toast.makeText(this, "No valid documents selected.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         DocumentRequest request = new DocumentRequest(userId, documentIds, reason);
 
-        // Make the API call to send the request to the PHP backend
         ApiService apiService = RetrofitClient.getApiService();
         apiService.sendDocumentRequest(request).enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(nextforapplication.this, "Request sent successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Log more detailed error info
-                    Log.d("DocumentRequest", "Error Response: " + response.code());
-                    Log.d("DocumentRequest", "Error Message: " + response.message());
-
-                    // Log the response body for further details
-                    if (response.errorBody() != null) {
-                        try {
-                            String errorResponse = response.errorBody().string();
-                            Log.d("DocumentRequest", "Error Body: " + errorResponse);
-                        } catch (IOException e) {
-                            Log.e("DocumentRequest", "Error reading response body", e);
-                        }
+                if (response.isSuccessful() && response.body() != null) {
+                    ApiResponse apiResponse = response.body();
+                    if (apiResponse.isSuccess()) {
+                        Toast.makeText(nextforapplication.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        // Optionally, navigate back or clear the form
+                    } else {
+                        Toast.makeText(nextforapplication.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-
-                    Toast.makeText(nextforapplication.this, "Failed to send request", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.e("DocumentRequest", "Failed response: " + response.message());
+                    Toast.makeText(nextforapplication.this, "Request failed: " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -115,4 +127,22 @@ public class nextforapplication extends AppCompatActivity {
         });
     }
 
+
+    private int getDocumentIdByName(String docName) {
+        switch (docName) {
+            case "Barangay ID": return 1;
+            case "Barangay Clearance": return 2;
+            case "Barangay Certificate": return 3;
+            case "Barangay Certificate of Residency": return 4;
+            case "Barangay Indigency": return 5;
+            case "Barangay Protection Order": return 6;
+            case "Barangay Business Clearance": return 7;
+            case "Barangay Blotter Report": return 8;
+            case "Barangay Certificate to File Action": return 9;
+            case "Barangay Permit for Events": return 10;
+            case "Barangay Voters Registration Certificate": return 11;
+            case "Barangay Community Tax Certificate": return 12;
+            default: return -1; // Unknown document
+        }
+    }
 }

@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.barngyapp.R;
 import com.example.barngyapp.announcementadapter.AnnouncementAdapter;
 import com.example.barngyapp.announcementadapter.announcement;
-import com.example.barngyapp.eventadapter.eventt;
 
 import java.util.ArrayList;
 import java.util.List;
