@@ -79,11 +79,18 @@ public class homepagee extends AppCompatActivity {
             startActivity(intent);
         });
 
-        RelativeLayout rlevent = findViewById(R.id.event);
+        RelativeLayout rlevent = findViewById(R.id.event);  // Ensure this ID matches the one in your XML layout
         rlevent.setOnClickListener(v -> {
-            Intent intent = new Intent(homepagee.this, eventt.class); // Ensure Eventt.class exists
+            // Trigger the event-related action here
+            // For example, displaying a Toast message or triggering a different activity
+
+            Toast.makeText(homepagee.this, "Event Button Clicked!", Toast.LENGTH_SHORT).show();
+
+            // Optionally, start a new activity related to the event
+            Intent intent = new Intent(homepagee.this, EventActivity.class);  // Ensure EventActivity.class exists
             startActivity(intent);
         });
+
 
         RelativeLayout rlstatus = findViewById(R.id.statusR); // Fix the reference for statusR
         rlstatus.setOnClickListener(v -> {

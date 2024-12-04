@@ -29,13 +29,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     sourceSets {
         getByName("main") {
             java {
-                srcDirs("src\\main\\java", "src\\main\\java\\2",
-                    "src\\main\\java",
-                    "src\\main\\java\\com\\example\\barngyapp\\backendapi"
-                )
+                srcDirs("src/main/java", "src/main/java/2", "src/main/java/com/example/barngyapp/backendapi")
             }
         }
     }
@@ -49,10 +47,11 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.filament.android)
     testImplementation(libs.junit)
-
+    implementation(libs.retrofit.v290) // Correct dependency syntax
+    implementation(libs.converter.gson.v290) // Correct dependency syntax
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation (libs.sqlite)
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
+    implementation(libs.sqlite)
+    implementation(libs.retrofit) // If using version from `libs`
+    implementation(libs.converter.gson) // If using version from `libs`
 }

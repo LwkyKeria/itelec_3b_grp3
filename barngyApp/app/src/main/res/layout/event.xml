@@ -1,38 +1,27 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
-    android:background="#2F3651">
+    tools:context=".backends.EventActivity">
 
+    <!-- Title of the app -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming Events"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:paddingBottom="16dp"/>
+
+    <!-- RecyclerView to display events -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_events"
+        android:id="@+id/eventsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:scrollbars="vertical" />
-
-    <TextView
-        android:id="@+id/tvNoEvents"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recyclerView_events"
-        android:visibility="gone"
-        android:text="No events found"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-
-    <CalendarView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvNoEvents" />
-
-    <TextView
-        android:id="@+id/text_event_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/calendar_view"
-        android:text="Event Location: [Location Name]"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:padding="8dp"/>
+</LinearLayout>
