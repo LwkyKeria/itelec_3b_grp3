@@ -1,34 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
-    android:background="#1A1A2E">
+    android:background="#FFFFFF">
 
-    <!-- Title -->
+    <!-- Button to request document -->
+    <Button
+        android:id="@+id/requestDocumentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request Document"
+        android:background="#2F3651" />
+
+    <!-- TextView to display document status -->
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/documentStatusTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status: Waiting for request..."
+        android:textColor="@android:color/black"
+        android:paddingTop="16dp"
+        android:textSize="16sp" />
+
+    <!-- ProgressBar for loading -->
+    <ProgressBar
+        android:id="@+id/loadingSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Applications"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:layout_centerHorizontal="true" /> <!-- Centered horizontally -->
+        android:layout_gravity="center"
+        android:visibility="gone" /> <!-- Initially hidden -->
 
-    <!-- RecyclerView for Applications -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewApplications"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/textViewTitle"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:clipToPadding="false"
-        android:paddingTop="16dp" />
-</RelativeLayout>
+</LinearLayout>

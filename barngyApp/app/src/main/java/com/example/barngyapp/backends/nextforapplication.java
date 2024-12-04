@@ -1,8 +1,9 @@
 package com.example.barngyapp.backends;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,104 +12,107 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.barngyapp.R;
-import com.example.barngyapp.backends.DBHelper; // Assuming you have a DBHelper class
+import com.example.barngyapp.backendapi.ApiResponse;
+import com.example.barngyapp.backendapi.ApiService;
+import com.example.barngyapp.backendapi.DocumentRequest;
+import com.example.barngyapp.backendapi.RetrofitClient;
+
+import java.io.IOException;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class nextforapplication extends AppCompatActivity {
-    private EditText editTextText; // To get the reason from user
 
+    private EditText edtReason;
+    private List<String> selectedDocuments;
+    private TextView reqDocsTextView;
+    private TextView userIdTextView;
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nextforapplication); // Set your layout
+        setContentView(R.layout.activity_nextforapplication);
 
-        // To display the requested documents
-        TextView reqDocs = findViewById(R.id.reqDocs);
-        editTextText = findViewById(R.id.editTextText);
-        // Button to request document
-        Button btnRequest = findViewById(R.id.btnRequest);
+        edtReason = findViewById(R.id.editTextText);
+        Button btnSendRequest = findViewById(R.id.btnRequest);
+        reqDocsTextView = findViewById(R.id.reqDocs);
+        userIdTextView = findViewById(R.id.textViewUserId);
 
-        // Retrieve the Intent that started this Activity
-        Intent intent = getIntent();
-        boolean isCb1Checked = intent.getBooleanExtra("isCb1Checked", false);
-        boolean isCb2Checked = intent.getBooleanExtra("isCb2Checked", false);
-        boolean isCb3Checked = intent.getBooleanExtra("isCb3Checked", false);
-        boolean isCb4Checked = intent.getBooleanExtra("isCb4Checked", false);
-        boolean isCb5Checked = intent.getBooleanExtra("isCb5Checked", false);
-        boolean isCb6Checked = intent.getBooleanExtra("isCb6Checked", false);
-        boolean isCb7Checked = intent.getBooleanExtra("isCb7Checked", false);
-        boolean isCb8Checked = intent.getBooleanExtra("isCb8Checked", false);
-        boolean isCb9Checked = intent.getBooleanExtra("isCb9Checked", false);
-        boolean isCb10Checked = intent.getBooleanExtra("isCb10Checked", false);
-        boolean isCb11Checked = intent.getBooleanExtra("isCb11Checked", false);
-        boolean isCb12Checked = intent.getBooleanExtra("isCb12Checked", false);
+        // Retrieve selected documents passed from the previous activity
+        selectedDocuments = getIntent().getStringArrayListExtra("selectedDocuments");
 
-        // Build a string to display the selected documents
-        StringBuilder selectedDocs = new StringBuilder("Selected Documents:\n");
-        if (isCb1Checked) selectedDocs.append("Barangay ID\n");
-        if (isCb2Checked) selectedDocs.append("Barangay Clearance\n");
-        if (isCb3Checked) selectedDocs.append("Barangay Certificate\n");
-        if (isCb4Checked) selectedDocs.append("Barangay Certificate for Residency\n");
-        if (isCb5Checked) selectedDocs.append("Barangay Indigency\n");
-        if (isCb6Checked) selectedDocs.append("Barangay Protection Order\n");
-        if (isCb7Checked) selectedDocs.append("Barangay Business Clearance\n");
-        if (isCb8Checked) selectedDocs.append("Barangay Blotter Report\n");
-        if (isCb9Checked) selectedDocs.append("Barangay Certification to File Action\n");
-        if (isCb10Checked) selectedDocs.append("Barangay Permits for Events\n");
-        if (isCb11Checked) selectedDocs.append("Barangay Voter's Registration Certificate\n");
-        if (isCb12Checked) selectedDocs.append("Barangay Community Tax Certificate\n");
+        if (selectedDocuments != null && !selectedDocuments.isEmpty()) {
+            StringBuilder documentsList = new StringBuilder("Selected Documents:\n");
+            for (String doc : selectedDocuments) {
+                documentsList.append(doc).append("\n");
+            }
+            reqDocsTextView.setText(documentsList.toString());
+        } else {
+            reqDocsTextView.setText("No documents selected.");
+        }
 
-        reqDocs.setText(selectedDocs.toString());
+        // Retrieve the user ID from SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String userId = sharedPreferences.getString("user_id", "Not Available");
 
-        // Set an OnClickListener for the button
-        btnRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submitRequest(isCb1Checked, isCb2Checked, isCb3Checked, isCb4Checked, isCb5Checked,
-                        isCb6Checked, isCb7Checked, isCb8Checked, isCb9Checked, isCb10Checked,
-                        isCb11Checked, isCb12Checked);
+        if ("Not Available".equals(userId)) {
+            userIdTextView.setText("User ID: Not Available");
+            Toast.makeText(this, "User is not logged in. Please log in first.", Toast.LENGTH_SHORT).show();
+        } else {
+            userIdTextView.setText("User ID: " + userId);
+        }
+
+        // Handle the request submission when the button is clicked
+        btnSendRequest.setOnClickListener(v -> {
+            String reason = edtReason.getText().toString();
+            if (!reason.isEmpty() && selectedDocuments != null && !selectedDocuments.isEmpty()) {
+                sendDocumentRequest(userId, selectedDocuments, reason);
+            } else {
+                Toast.makeText(nextforapplication.this, "Please provide a reason and select documents.", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void submitRequest(boolean isCb1Checked, boolean isCb2Checked, boolean isCb3Checked,
-                               boolean isCb4Checked, boolean isCb5Checked, boolean isCb6Checked,
-                               boolean isCb7Checked, boolean isCb8Checked, boolean isCb9Checked,
-                               boolean isCb10Checked, boolean isCb11Checked, boolean isCb12Checked) {
-        // Get the reason from the EditText
-        String reason = editTextText.getText().toString().trim();
+    private void sendDocumentRequest(String userId, List<String> documentIds, String reason) {
+        // Create a new DocumentRequest object with the provided data
+        DocumentRequest request = new DocumentRequest(userId, documentIds, reason);
 
-        // Validate reason input
-        if (reason.isEmpty()) {
-            // Notify user to enter a reason
-            editTextText.setError("Please enter your reason");
-            return;
-        } else {
-            Toast.makeText(nextforapplication.this, "Application Sent!", Toast.LENGTH_SHORT).show();
-        }
+        // Make the API call to send the request to the PHP backend
+        ApiService apiService = RetrofitClient.getApiService();
+        apiService.sendDocumentRequest(request).enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(nextforapplication.this, "Request sent successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Log more detailed error info
+                    Log.d("DocumentRequest", "Error Response: " + response.code());
+                    Log.d("DocumentRequest", "Error Message: " + response.message());
 
-        // Insert the selected documents into the database with a "Pending" status
-        DBHelper dbHelper = new DBHelper(nextforapplication.this);
+                    // Log the response body for further details
+                    if (response.errorBody() != null) {
+                        try {
+                            String errorResponse = response.errorBody().string();
+                            Log.d("DocumentRequest", "Error Body: " + errorResponse);
+                        } catch (IOException e) {
+                            Log.e("DocumentRequest", "Error reading response body", e);
+                        }
+                    }
 
-        if (isCb1Checked) dbHelper.insertApplication("Barangay ID", "Pending");
-        if (isCb2Checked) dbHelper.insertApplication("Barangay Clearance", "Pending");
-        if (isCb3Checked) dbHelper.insertApplication("Barangay Certificate", "Pending");
-        if (isCb4Checked) dbHelper.insertApplication("Barangay Certificate for Residency", "Pending");
-        if (isCb5Checked) dbHelper.insertApplication("Barangay Indigency", "Pending");
-        if (isCb6Checked) dbHelper.insertApplication("Barangay Protection Order", "Pending");
-        if (isCb7Checked) dbHelper.insertApplication("Barangay Business Clearance", "Pending");
-        if (isCb8Checked) dbHelper.insertApplication("Barangay Blotter Report", "Pending");
-        if (isCb9Checked) dbHelper.insertApplication("Barangay Certification to File Action", "Pending");
-        if (isCb10Checked) dbHelper.insertApplication("Barangay Permits for Events", "Pending");
-        if (isCb11Checked) dbHelper.insertApplication("Barangay Voter's Registration Certificate", "Pending");
-        if (isCb12Checked) dbHelper.insertApplication("Barangay Community Tax Certificate", "Pending");
+                    Toast.makeText(nextforapplication.this, "Failed to send request", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-        dbHelper.close();
-
-        // Optionally, navigate to the next screen (ViewApplicationStatus)
-        Intent intent = new Intent(nextforapplication.this, viewapplication.class);
-        startActivity(intent);
-
-        // Finish current activity if you don't need to return to it
-        finish();
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Log.e("DocumentRequest", "Request failed", t);
+                Toast.makeText(nextforapplication.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 }

@@ -1,9 +1,11 @@
 package com.example.barngyapp.backends;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -104,16 +106,28 @@ public class loginn extends AppCompatActivity {
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-
                 etLoginUser.setText("");
                 etLoginPass.setText("");
 
                 if (response.isSuccessful() && response.body() != null) {
                     ApiResponse apiResponse = response.body();
                     if (apiResponse.isSuccess()) {
+                        // Assuming 'user_id' is returned in the response
+                        String userId = apiResponse.getUserId();  // Fetch user_id from ApiResponse
+
+                        // Save the user_id in SharedPreferences
+                        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("user_id", userId); // Store user_id
+                        editor.apply();
+
+                        // Debug log to confirm user_id is saved
+                        Log.d("loginn", "User ID saved: " + userId);
+
                         Toast.makeText(loginn.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(loginn.this, homepagee.class); // Navigate to user homepage
                         startActivity(intent);
+                        finish();
                     } else {
                         Toast.makeText(loginn.this, "Login Failed: " + apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -130,4 +144,6 @@ public class loginn extends AppCompatActivity {
             }
         });
     }
+
+
 }

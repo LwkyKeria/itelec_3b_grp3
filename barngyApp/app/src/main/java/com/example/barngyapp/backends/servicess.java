@@ -58,7 +58,7 @@ public class servicess extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("ServicessActivity", "Online Application via ImageView2");
-                Intent intent = new Intent(servicess.this, onlineapplicationn.class);
+                Intent intent = new Intent(servicess.this, onlineappointmentt.class);
                 startActivity(intent);
             }
         });
@@ -69,7 +69,7 @@ public class servicess extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("ServicessActivity", "Online Appointment via ImageView3");
-                Intent intent = new Intent(servicess.this, onlineappointmentt.class);
+                Intent intent = new Intent(servicess.this, onlineapplicationn.class);
                 startActivity(intent);
             }
         });
