@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Appointments.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
@@ -154,8 +155,10 @@
     <Content Include="Requests.aspx" />
     <Content Include="Residents.aspx" />
     <Content Include="styles\about.css" />
+    <Content Include="styles\appointments.css" />
     <Content Include="styles\home.css" />
     <Content Include="styles\request.css" />
+    <Content Include="styles\residents.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +168,13 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Appointments.aspx.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Appointments.aspx.designer.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
     </Compile>
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="Default.aspx.cs">

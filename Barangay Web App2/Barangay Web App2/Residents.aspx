@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Residents.aspx.cs" Inherits="Barangay_Web_App2.Residents" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Residents.aspx.cs" Inherits="Barangay_Web_App2.Residents" Async="true" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -20,9 +20,27 @@
             font-size: 24px;
         }
 
+        #nav {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+    #nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #007bff;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+        #nav a:hover {
+            color: #0056b3;
+        }
+
         #content {
             padding: 20px;
-            text-align: center;
         }
 
         table {
@@ -43,6 +61,16 @@
             background-color: #4CAF50;
             color: white;
         }
+
+        .status {
+            color: red;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: gray;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -50,27 +78,55 @@
         <div id="header">
             Registered Residents
         </div>
+                <div id="nav">
+    <a href="Home.aspx">Home</a>
+    <a href="About.aspx">About</a>
+    <a href="Residents.aspx">Residents</a>
+    <a href="Requests.aspx">Requests</a>
+    <a href="Appointments.aspx">Appointments</a>
+</div>
 
         <div id="content">
-            <table>
-                <thead>
+            <!-- Search Box -->
+            <asp:TextBox ID="txtSearch" runat="server" placeholder="Search by name..." />
+            <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+
+            <asp:Label ID="lblStatus" runat="server" CssClass="status" Text="" />
+
+            <!-- Repeater Control -->
+            <asp:Repeater ID="ResidentsRepeater" runat="server">
+                <HeaderTemplate>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Resident ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                </HeaderTemplate>
+
+                <ItemTemplate>
                     <tr>
-                        <th>Resident ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
+                        <td><%# Eval("ResidentID") %></td>
+                        <td><%# Eval("FullName") %></td>
+                        <td><%# Eval("Phone") %></td>
+                        <td><%# Eval("Location") %></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <%-- Placeholder for dynamic residents data --%>
-                    <tr>
-                        <td>1</td>
-                        <td>Jasper B. Latag</td>
-                        <td>123456@ub.edu.ph</td>
-                        <td>Heaven Street</td>
-                    </tr>
-                </tbody>
-            </table>
+                </ItemTemplate>
+
+                <FooterTemplate>
+                        </tbody>
+                    </table>
+                </FooterTemplate>
+            </asp:Repeater>
+
+            <!-- Empty Data Message -->
+            <asp:Panel ID="EmptyDataPanel" runat="server" CssClass="empty-message" Visible="false">
+                No residents found.
+            </asp:Panel>
         </div>
     </form>
 </body>

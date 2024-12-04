@@ -11,12 +11,13 @@
     <div id="header">
     Barangay Officials
     </div>
-    <div id="nav">
-        <a href="Home.aspx">Home</a>
-        <a href="About.aspx">About</a>
-        <a href="Residents.aspx">Residents</a>
-        <a href="Requests.aspx">Requests</a>
-    </div>
+            <div id="nav">
+    <a href="Home.aspx">Home</a>
+    <a href="About.aspx">About</a>
+    <a href="Residents.aspx">Residents</a>
+    <a href="Requests.aspx">Requests</a>
+    <a href="Appointments.aspx">Appointments</a>
+</div>
 
     <form id="form1" runat="server">
         <div class="container">

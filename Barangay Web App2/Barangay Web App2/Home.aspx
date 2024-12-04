@@ -12,12 +12,13 @@
             Welcome to Barangay Web App!
         </div>
 
-        <div id="nav">
-            <a href="Home.aspx">Home</a>
-            <a href="About.aspx">About</a>
-            <a href="Residents.aspx">Residents</a>
-            <a href="Requests.aspx">Requests</a>
-        </div>
+                <div id="nav">
+    <a href="Home.aspx">Home</a>
+    <a href="About.aspx">About</a>
+    <a href="Residents.aspx">Residents</a>
+    <a href="Requests.aspx">Requests</a>
+    <a href="Appointments.aspx">Appointments</a>
+</div>
 
         <div id="content">
             <h1>Create and View Events</h1>
