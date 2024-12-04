@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#nav {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+    #nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #007bff;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+        #nav a:hover {
+            color: #0056b3;
+        }
+
+.container {
+    padding: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    .table thead th {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .table tbody td {
+        text-align: center;
+        padding: 12px;
+        border: 1px solid #ddd;
+    }
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
