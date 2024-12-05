@@ -12,6 +12,8 @@
     <string name="don_t_have_an_account">Don\'t Have an Account?</string>
     <string name="log_in">Log in</string>
     <string name="show_hide_password">Show/Hide Password</string>
+    <string name="choose_appointment">Choose the one you want to make an appointment with</string>
+
 
     <string-array name="barangay_off">
         <item>Rosauro - Punong Barangay</item>

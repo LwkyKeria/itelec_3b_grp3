@@ -12,23 +12,27 @@ public class ApiResponse {
     @SerializedName("document_request_id") // Backend sends this field for document request submissions
     private String documentRequestId;
 
-    @SerializedName("error_code") // New: Handles specific error codes from the backend
+    @SerializedName("error_code") // Handles specific error codes from the backend
     private String errorCode;
 
-    @SerializedName("timestamp") // New: Optional timestamp field from the backend
+    @SerializedName("timestamp") // Optional timestamp field from the backend
     private String timestamp;
+
+    @SerializedName("status") // Assuming your API response contains a status field
+    private String status;
 
     // Default constructor
     public ApiResponse() {}
 
     // Constructor for testing/debugging
-    public ApiResponse(boolean success, String message, String userId, String documentRequestId, String errorCode, String timestamp) {
+    public ApiResponse(boolean success, String message, String userId, String documentRequestId, String errorCode, String timestamp, String status) {
         this.success = success;
         this.message = message;
         this.userId = userId;
         this.documentRequestId = documentRequestId;
         this.errorCode = errorCode;
         this.timestamp = timestamp;
+        this.status = status;
     }
 
     // Getter and Setter methods for 'success'
@@ -85,6 +89,15 @@ public class ApiResponse {
         this.timestamp = timestamp;
     }
 
+    // Getter and Setter methods for 'status'
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     // Override toString for better logging/debugging
     @Override
     public String toString() {
@@ -95,6 +108,7 @@ public class ApiResponse {
                 ", documentRequestId='" + documentRequestId + '\'' +
                 ", errorCode='" + errorCode + '\'' +
                 ", timestamp='" + timestamp + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

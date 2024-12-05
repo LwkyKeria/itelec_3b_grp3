@@ -50,6 +50,9 @@ dependencies {
     implementation(libs.retrofit.v290) // Correct dependency syntax
     implementation(libs.converter.gson.v290) // Correct dependency syntax
     androidTestImplementation(libs.ext.junit)
+    //noinspection GradleDependency
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.sqlite)
     implementation(libs.retrofit) // If using version from `libs`

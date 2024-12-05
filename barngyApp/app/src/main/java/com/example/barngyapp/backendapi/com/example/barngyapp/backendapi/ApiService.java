@@ -1,14 +1,10 @@
 package com.example.barngyapp.backendapi;
 
-import com.example.barngyapp.eventadapter.Event;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
@@ -25,9 +21,15 @@ public interface ApiService {
     Call<ApiResponse> createUser(@Body registerUser user);
 
     // Updated sendDocumentRequest method
-    @POST("routes/android_submit_request.php")  // Update the path to your actual PHP script
+    @POST("routes/android_submit_request.php")
     Call<ApiResponse> sendDocumentRequest(@Body DocumentRequest documentRequest);
 
-    @GET("routes/event.php")
-    Call<List<Event>> getEvents();
+    @FormUrlEncoded
+    @POST("routes/insert_data.php")
+    Call<ApiResponse> createAppointment(
+            @Field("appointment_reason") String reason,
+            @Field("appointment_date") String date,
+            @Field("user_ID") int userId,
+            @Field("appointment_bgryofficials") int officialId
+    );
 }
