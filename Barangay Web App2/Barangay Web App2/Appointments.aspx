@@ -45,20 +45,26 @@
                             <tbody>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <tr>
-                            <td><%# Eval("Id") %></td>
-                            <td><%# Eval("Reason") %></td>
-                            <td><%# Eval("OfficialName") %> (<%# Eval("OfficialPosition") %>)</td>
-                            <td><%# Eval("Date", "{0:MMMM dd, yyyy}") %></td>
-                            <td><%# Eval("Status") ?? "Pending" %></td>
-                            <td>
-                                <asp:Button ID="btnAccept" runat="server" Text="Accept" CssClass="approveButton"
-                                    CommandArgument='<%# Eval("Id") %>' OnClick="UpdateAppointmentStatus" CommandName="accepted" />
-                                <asp:Button ID="btnReject" runat="server" Text="Reject" CssClass="rejectButton"
-                                    CommandArgument='<%# Eval("Id") %>' OnClick="UpdateAppointmentStatus" CommandName="rejected" />
-                            </td>
-                        </tr>
-                    </ItemTemplate>
+    <tr>
+        <td><%# Eval("Id") %></td>
+        <td><%# Eval("Reason") %></td>
+        <td><%# Eval("OfficialName") %> (<%# Eval("OfficialPosition") %>)</td>
+        <td><%# Convert.ToDateTime(Eval("Date")).ToString("MMMM dd, yyyy") %></td>
+        <td><%# Eval("Status") ?? "Pending" %></td>
+        <td>
+            <asp:Button ID="btnAccept" runat="server" Text="Accept" 
+                CssClass="approveButton"
+                CommandArgument='<%# Eval("Id") %>' 
+                OnClick="UpdateAppointmentStatus" 
+                CommandName="accepted" />
+            <asp:Button ID="btnReject" runat="server" Text="Reject" 
+                CssClass="rejectButton"
+                CommandArgument='<%# Eval("Id") %>' 
+                OnClick="UpdateAppointmentStatus" 
+                CommandName="rejected" />
+        </td>
+    </tr>
+</ItemTemplate>
                     <FooterTemplate>
                             </tbody>
                         </table>

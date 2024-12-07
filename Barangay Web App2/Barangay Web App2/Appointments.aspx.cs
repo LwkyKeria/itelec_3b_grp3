@@ -22,29 +22,29 @@ namespace Barangay_Web_App2
 
         private async Task LoadAppointmentsAsync(string searchQuery = "")
         {
-            string apiUrl = "https://barangayapp.x10.mx/api/routes/fetch_appointment.php"; // API URL for fetching appointments
+            string apiUrl = "https://barangayapp.x10.mx/api/routes/fetch_appointment.php";
 
             try
             {
-                // Construct URL with search query (if any)
                 string url = string.IsNullOrWhiteSpace(searchQuery)
                              ? apiUrl
                              : $"{apiUrl}?search={Uri.EscapeDataString(searchQuery)}";
 
-                HttpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                HttpClient.DefaultRequestHeaders.Accept.Add(
+                    new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
                 HttpResponseMessage response = await HttpClient.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)
                 {
                     string jsonResponse = await response.Content.ReadAsStringAsync();
-
-                    // Deserialize into the ApiResponse model
                     var apiResponse = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
 
                     if (apiResponse?.Appointments != null && apiResponse.Appointments.Count > 0)
                     {
-                        BindAppointments(apiResponse.Appointments);
+                        AppointmentsRepeater.DataSource = apiResponse.Appointments;
+                        AppointmentsRepeater.DataBind();
+                        NoAppointmentsMessage.Visible = false;
                     }
                     else
                     {
@@ -147,12 +147,12 @@ namespace Barangay_Web_App2
 
         public class Appointment
         {
-            public int Id { get; set; }
-            public string Reason { get; set; }
-            public string Date { get; set; }
-            public string OfficialName { get; set; }
-            public string OfficialPosition { get; set; }
-            public string Status { get; set; }
+            public int Id { get; set; }  // Maps to idbrgy_appointment
+            public string Reason { get; set; }  // Maps to appointment_reason
+            public string Date { get; set; }    // Maps to appointment_date
+            public string OfficialName { get; set; }  // Maps to official_name
+            public string OfficialPosition { get; set; }  // Maps to official_position
+            public string Status { get; set; }  // Maps to status
         }
     }
 }
