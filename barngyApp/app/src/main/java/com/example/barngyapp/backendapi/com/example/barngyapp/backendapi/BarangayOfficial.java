@@ -1,38 +1,36 @@
 package com.example.barngyapp.backendapi;
 
-public class BarangayOfficial {
-    private int id;
-    private String name;
-    private String position;
-    private String contact;
+import com.google.gson.annotations.SerializedName;
 
-    public BarangayOfficial(int id, String name, String position, String contact) {
+public class BarangayOfficial {
+    @SerializedName("official_id")
+    private int id;
+
+    @SerializedName("official_name")
+    private String name;
+
+    @SerializedName("official_position")
+    private String position;
+
+    @SerializedName("contact_info")
+    private String contactInfo;
+
+    // Constructor
+    public BarangayOfficial(int id, String name, String position, String contactInfo) {
         this.id = id;
         this.name = name;
         this.position = position;
-        this.contact = contact;
+        this.contactInfo = contactInfo;
     }
 
     // Getters
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public String getPosition() { return position; }
+    public String getContactInfo() { return contactInfo; }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    // Override toString to display the official's name in the Spinner
     @Override
     public String toString() {
-        return name;  // This will display the name of the official in the Spinner
+        return position + ": " + name;
     }
 }

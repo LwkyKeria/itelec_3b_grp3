@@ -1,77 +1,59 @@
 package com.example.barngyapp.eventadapter;
 
-import java.util.Objects;
+import com.google.gson.annotations.SerializedName;
 
 public class Event {
+    @SerializedName("event_id")
+    private int eventId;
 
+    @SerializedName("event_title")
     private String title;
+
+    @SerializedName("event_description")
     private String description;
+
+    @SerializedName("event_date")
     private String date;
+
+    @SerializedName("event_time")
+    private String time;
+
+    @SerializedName("event_location")
     private String location;
 
-    // Constructor
-    public Event(String title, String description, String date, String location) {
+    @SerializedName("created_time")
+    private String createdTime;
+
+    // Default constructor required for JSON parsing
+    public Event() {}
+
+    // Constructor with all fields
+    public Event(int eventId, String title, String description, String date,
+                 String time, String location, String createdTime) {
+        this.eventId = eventId;
         this.title = title;
         this.description = description;
         this.date = date;
+        this.time = time;
         this.location = location;
+        this.createdTime = createdTime;
     }
 
-    // Getters and setters
-    public String getTitle() {
-        return title;
-    }
+    // Getters
+    public int getEventId() { return eventId; }
+    public String getTitle() { return title; }
+    public String getDescription() { return description; }
+    public String getDate() { return date; }
+    public String getTime() { return time; }
+    public String getLocation() { return location; }
+    public String getCreatedTime() { return createdTime; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    // Optional for debugging or logging
-    @Override
-    public String toString() {
-        return "Event{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", date='" + date + '\'' +
-                ", location='" + location + '\'' +
-                '}';
-    }
-
-    // Optional equals() and hashCode() for comparing events
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return title.equals(event.title) && description.equals(event.description) && date.equals(event.date) && location.equals(event.location);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, description, date, location);
-    }
+    // Setters
+    public void setEventId(int eventId) { this.eventId = eventId; }
+    public void setTitle(String title) { this.title = title; }
+    public void setDescription(String description) { this.description = description; }
+    public void setDate(String date) { this.date = date; }
+    public void setTime(String time) { this.time = time; }
+    public void setLocation(String location) { this.location = location; }
+    public void setCreatedTime(String createdTime) { this.createdTime = createdTime; }
 }

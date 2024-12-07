@@ -19,20 +19,18 @@ import com.example.barngyapp.R;
 import com.example.barngyapp.backendapi.ApiResponse;
 import com.example.barngyapp.backendapi.ApiService;
 import com.example.barngyapp.backendapi.RetrofitClient;
-import com.example.barngyapp.backendapi.User;
 import com.example.barngyapp.backendapi.registerUser;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 public class createe extends AppCompatActivity {
 
-    EditText etUsername, etPassword, etFirstName, etLastName, etMiddleName, etPhone;
-    Button btnCreate;
-    TextView tvPasswordWarning, tvPhoneWarning; // For warnings
-    ImageView ShowPasswordCreate;
+    private EditText etUsername, etPassword, etFirstName, etLastName, etMiddleName, etPhone;
+    private Button btnCreate;
+    private TextView tvPasswordWarning, tvPhoneWarning;
+    private ImageView ShowPasswordCreate;
     private boolean isPasswordVisible = false;
 
     @Override
@@ -40,6 +38,11 @@ public class createe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create);
 
+        initializeViews();
+        setupClickListeners();
+    }
+
+    private void initializeViews() {
         etUsername = findViewById(R.id.etusername);
         etPassword = findViewById(R.id.etpassword);
         etFirstName = findViewById(R.id.etFname);
@@ -48,144 +51,91 @@ public class createe extends AppCompatActivity {
         etPhone = findViewById(R.id.etCpnum);
         btnCreate = findViewById(R.id.btncrt);
         ShowPasswordCreate = findViewById(R.id.ivShowPassword);
-
-
-        // Initialize warning text views
         tvPasswordWarning = findViewById(R.id.tvPasswordWarning);
         tvPhoneWarning = findViewById(R.id.tvPhoneWarning);
+    }
 
-        // Set up the Create button click listener
-        btnCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get input from the user
-                String username = etUsername.getText().toString().trim();
-                String password = etPassword.getText().toString().trim();
-                String firstName = etFirstName.getText().toString().trim();
-                String lastName = etLastName.getText().toString().trim();
-                String middleName = etMiddleName.getText().toString().trim();
-                String phone = etPhone.getText().toString().trim();
+    private void setupClickListeners() {
+        btnCreate.setOnClickListener(v -> validateAndRegister());
 
-                // Reset warnings to invisible
-                tvPasswordWarning.setVisibility(View.GONE);
-                tvPhoneWarning.setVisibility(View.GONE);
+        ShowPasswordCreate.setOnClickListener(v -> togglePasswordVisibility());
+    }
 
-                // Basic validation
-                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password) ||
-                        TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(middleName) || TextUtils.isEmpty(phone)) {
-                    Toast.makeText(createe.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
-                } else if (password.length() < 7) {
-                    tvPasswordWarning.setVisibility(View.VISIBLE); // Show password warning
-                } else if (!phone.matches("\\d{11}")) {
-                    tvPhoneWarning.setVisibility(View.VISIBLE); // Show phone number warning
-                } else {
-                    // If validation is successful, show success message
-                    Toast.makeText(createe.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
+    private void togglePasswordVisibility() {
+        isPasswordVisible = !isPasswordVisible;
+        if (isPasswordVisible) {
+            etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            ShowPasswordCreate.setImageResource(R.drawable.view);
+        } else {
+            etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            ShowPasswordCreate.setImageResource(R.drawable.eyeepas);
+        }
+        etPassword.setSelection(etPassword.getText().length());
+    }
 
-                    // Move to Login Activity
-                    Intent intent = new Intent(createe.this, loginn.class);
-                    intent.putExtra("username", username);
-                    intent.putExtra("password", password);
-                    startActivity(intent);
-                    finish();
-                }
-            }
-        });
+    private void validateAndRegister() {
+        String username = etUsername.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+        String firstName = etFirstName.getText().toString().trim();
+        String lastName = etLastName.getText().toString().trim();
+        String middleName = etMiddleName.getText().toString().trim();
+        String phone = etPhone.getText().toString().trim();
 
-        ShowPasswordCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isPasswordVisible) {
-                    // Hide password
-                    etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    ShowPasswordCreate.setImageResource(R.drawable.eyeepas); // Closed eye icon
-                } else {
-                    // Show password
-                    etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    ShowPasswordCreate.setImageResource(R.drawable.view); // Open eye icon
-                }
-                isPasswordVisible = !isPasswordVisible;
+        tvPasswordWarning.setVisibility(View.GONE);
+        tvPhoneWarning.setVisibility(View.GONE);
 
-                // Move the cursor to the end of the text
-                etPassword.setSelection(etPassword.getText().length());
-            }
-        });
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password) ||
+                TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) ||
+                TextUtils.isEmpty(middleName) || TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        if (password.length() < 7) {
+            tvPasswordWarning.setVisibility(View.VISIBLE);
+            return;
+        }
 
-        tvPasswordWarning = findViewById(R.id.tvPasswordWarning);
-        tvPhoneWarning = findViewById(R.id.tvPhoneWarning);
+        if (!phone.matches("\\d{11}")) {
+            tvPhoneWarning.setVisibility(View.VISIBLE);
+            return;
+        }
 
-        btnCreate.setOnClickListener(v -> {
-            String username = etUsername.getText().toString().trim();
-            String password = etPassword.getText().toString().trim();
-            String firstName = etFirstName.getText().toString().trim();
-            String lastName = etLastName.getText().toString().trim();
-            String middleName = etMiddleName.getText().toString().trim();
-            String phone = etPhone.getText().toString().trim();
-
-            tvPasswordWarning.setVisibility(View.GONE);
-            tvPhoneWarning.setVisibility(View.GONE);
-
-            if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password) ||
-                    TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) ||
-                    TextUtils.isEmpty(middleName) || TextUtils.isEmpty(phone)) {
-                Toast.makeText(createe.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
-            } else if (password.length() < 7) {
-                tvPasswordWarning.setVisibility(View.VISIBLE);
-            } else if (!phone.matches("\\d{11}")) {
-                tvPhoneWarning.setVisibility(View.VISIBLE);
-            } else {
-                registerUser newUser = new registerUser(username, password, firstName, lastName, middleName, phone);
-                registerUser(newUser);
-
-            }
-        });
-
-        ShowPasswordCreate.setOnClickListener(v -> {
-            if (isPasswordVisible) {
-                etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                ShowPasswordCreate.setImageResource(R.drawable.eyeepas);
-            } else {
-                etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                ShowPasswordCreate.setImageResource(R.drawable.view);
-            }
-            isPasswordVisible = !isPasswordVisible;
-            etPassword.setSelection(etPassword.getText().length());
-        });
+        registerUser newUser = new registerUser(username, password, firstName, lastName, middleName, phone);
+        registerUser(newUser);
     }
 
     private void registerUser(registerUser user) {
         ApiService apiService = RetrofitClient.getRetrofitInstance().create(ApiService.class);
-
-
         Call<ApiResponse> call = apiService.createUser(user);
+
         call.enqueue(new Callback<ApiResponse>() {
             @Override
-
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Log.d("API Response", "Response body: " + response.body().toString()); // log the response
+                    Log.d("API Response", "Response body: " + response.body().toString());
                     if (response.body().isSuccess()) {
                         Toast.makeText(createe.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(createe.this, loginn.class);
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(createe.this, "Registration failed: " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(createe.this, "Registration failed: " +
+                                response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Log.d("API Response", "Response failed with message: " + response.message()); // log failure message
-                    Toast.makeText(createe.this, "Registration failed: " + response.message(), Toast.LENGTH_SHORT).show();
+                    Log.d("API Response", "Response failed with message: " + response.message());
+                    Toast.makeText(createe.this, "Registration failed: " +
+                            response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 
-
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-                Toast.makeText(createe.this, "Failed to connect to the server. Please try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(createe.this,
+                        "Failed to connect to the server. Please try again.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-
 }

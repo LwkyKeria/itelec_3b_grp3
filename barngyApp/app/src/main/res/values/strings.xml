@@ -13,6 +13,7 @@
     <string name="log_in">Log in</string>
     <string name="show_hide_password">Show/Hide Password</string>
     <string name="choose_appointment">Choose the one you want to make an appointment with</string>
+    <string name="error_loading_events">Error loading events. Please try again later.</string>
 
 
     <string-array name="barangay_off">

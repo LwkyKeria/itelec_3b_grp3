@@ -8,7 +8,6 @@
     android:padding="16dp"
     tools:context=".backends.EventActivity">
 
-    <!-- Title of the app -->
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -18,10 +17,25 @@
         android:layout_gravity="center"
         android:paddingBottom="16dp"/>
 
-    <!-- RecyclerView to display events -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/noEventsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="No upcoming events"
+        android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"/>
+
 </LinearLayout>

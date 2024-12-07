@@ -6,33 +6,43 @@ public class ApiResponse {
     private boolean success;
     private String message;
 
-    @SerializedName("user_id") // Backend sends this field for login/signup responses
+    @SerializedName("user_id")
     private String userId;
 
-    @SerializedName("document_request_id") // Backend sends this field for document request submissions
+    @SerializedName("document_request_id")
     private String documentRequestId;
 
-    @SerializedName("error_code") // Handles specific error codes from the backend
+    @SerializedName("appointment_id")
+    private String appointmentId;
+
+    @SerializedName("error_code")
     private String errorCode;
 
-    @SerializedName("timestamp") // Optional timestamp field from the backend
+    @SerializedName("timestamp")
     private String timestamp;
 
-    @SerializedName("status") // Assuming your API response contains a status field
+    @SerializedName("status")
     private String status;
+
+    @SerializedName("appointment_status")
+    private String appointmentStatus;
 
     // Default constructor
     public ApiResponse() {}
 
     // Constructor for testing/debugging
-    public ApiResponse(boolean success, String message, String userId, String documentRequestId, String errorCode, String timestamp, String status) {
+    public ApiResponse(boolean success, String message, String userId, String documentRequestId,
+                       String appointmentId, String errorCode, String timestamp, String status,
+                       String appointmentStatus) {
         this.success = success;
         this.message = message;
         this.userId = userId;
         this.documentRequestId = documentRequestId;
+        this.appointmentId = appointmentId;
         this.errorCode = errorCode;
         this.timestamp = timestamp;
         this.status = status;
+        this.appointmentStatus = appointmentStatus;
     }
 
     // Getter and Setter methods for 'success'
@@ -98,7 +108,24 @@ public class ApiResponse {
         this.status = status;
     }
 
-    // Override toString for better logging/debugging
+    // Getter and Setter methods for 'appointment_id'
+    public String getAppointmentId() {
+        return appointmentId;
+    }
+
+    public void setAppointmentId(String appointmentId) {
+        this.appointmentId = appointmentId;
+    }
+
+    // Getter and Setter methods for 'appointment_status'
+    public String getAppointmentStatus() {
+        return appointmentStatus;
+    }
+
+    public void setAppointmentStatus(String appointmentStatus) {
+        this.appointmentStatus = appointmentStatus;
+    }
+
     @Override
     public String toString() {
         return "ApiResponse{" +
@@ -106,9 +133,11 @@ public class ApiResponse {
                 ", message='" + message + '\'' +
                 ", userId='" + userId + '\'' +
                 ", documentRequestId='" + documentRequestId + '\'' +
+                ", appointmentId='" + appointmentId + '\'' +
                 ", errorCode='" + errorCode + '\'' +
                 ", timestamp='" + timestamp + '\'' +
                 ", status='" + status + '\'' +
+                ", appointmentStatus='" + appointmentStatus + '\'' +
                 '}';
     }
 }
