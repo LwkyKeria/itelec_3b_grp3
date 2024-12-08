@@ -8,9 +8,11 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import com.example.barngyapp.eventadapter.Event;
-public interface ApiService {
+import retrofit2.http.Query;
 
+import com.example.barngyapp.eventadapter.Event;
+
+public interface ApiService {
     @Headers("Content-type: application/json")
     @POST("routes/insert_data.php")
     Call<ApiResponse> insertUser(@Body User user);
@@ -30,7 +32,7 @@ public interface ApiService {
             @Field("appointment_reason") String reason,
             @Field("appointment_date") String date,
             @Field("user_ID") String userId,
-            @Field("official_id") int officialId  // Updated parameter name
+            @Field("official_id") int officialId
     );
 
     @GET("routes/android_get_officials.php")
@@ -38,4 +40,7 @@ public interface ApiService {
 
     @GET("routes/android_getEvents.php")
     Call<List<Event>> getEvents();
+
+    @GET("routes/android_viewappointment.php")
+    Call<AppointmentResponse> getUserAppointments(@Query("user_id") String userId);
 }

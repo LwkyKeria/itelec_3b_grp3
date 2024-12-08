@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.filament.android)
+    implementation(libs.swiperefreshlayout)
     testImplementation(libs.junit)
     implementation(libs.retrofit.v290) // Correct dependency syntax
     implementation(libs.converter.gson.v290) // Correct dependency syntax
@@ -57,4 +58,7 @@ dependencies {
     implementation(libs.sqlite)
     implementation(libs.retrofit) // If using version from `libs`
     implementation(libs.converter.gson) // If using version from `libs`
+    implementation (libs.volley)
+    implementation (libs.cardview)
+    implementation (libs.appcompat.v161)
 }
