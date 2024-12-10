@@ -1,12 +1,12 @@
-﻿body {
+body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
 }
 
 #header {
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -24,15 +24,16 @@
     #nav a {
         margin: 0 15px;
         text-decoration: none;
-        color: #007bff;
+        color: #28a745;
         font-size: 18px;
         font-weight: 500;
     }
 
         #nav a:hover {
-            color: #0056b3;
+            color: #218838;
         }
 
+/* Content */
 #content {
     padding: 20px;
     max-width: 960px;
@@ -88,16 +89,44 @@ table {
         border: 1px solid #ddd;
     }
 
-.no-requests-message {
+/* Buttons for Actions */
+.approveButton, .rejectButton {
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
     text-align: center;
-    color: #757575;
-    font-size: 18px;
-    margin-top: 20px;
+    color: white;
+    font-size: 14px;
+    border: none;
 }
 
+.approveButton {
+    background-color: #28a745;
+}
+
+    .approveButton:hover {
+        background-color: #218838;
+    }
+
+.rejectButton {
+    background-color: #dc3545;
+}
+
+    .rejectButton:hover {
+        background-color: #c82333;
+    }
+
+/* Feedback and Empty State */
 .status-message {
     text-align: center;
     color: #d9534f;
     font-weight: bold;
     margin-top: 10px;
+}
+
+.no-requests-message {
+    text-align: center;
+    color: #757575;
+    font-size: 18px;
+    margin-top: 20px;
 }

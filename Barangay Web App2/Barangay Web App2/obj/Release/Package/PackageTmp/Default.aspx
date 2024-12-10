@@ -35,7 +35,7 @@
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
         </div>
         <div style="margin-top: 10px;">
-            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="Submit_Click" />
+            <asp:Button ID="btnSubmit" runat="server" Text="Login" OnClick="Submit_Click" />
         </div>
         <div>
             <asp:Label ID="lblResult" runat="server"></asp:Label>

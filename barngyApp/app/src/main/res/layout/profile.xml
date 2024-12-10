@@ -10,9 +10,9 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="160dp"
-        android:layout_height="39dp"
-        android:text="Profile"
+        android:layout_width="272dp"
+        android:layout_height="48dp"
+        android:text="Barangay Info"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -41,44 +41,20 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginStart="147dp"
             android:layout_marginTop="21dp"
             android:layout_marginEnd="144dp"
-            android:layout_marginBottom="407dp"
             app:srcCompat="@drawable/user" />
 
         <EditText
             android:id="@+id/editTextText6"
             android:layout_width="260dp"
             android:layout_height="68dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="58dp"
-            android:layout_marginTop="122dp"
-            android:layout_marginEnd="58dp"
-            android:layout_marginBottom="324dp"
+            android:layout_below="@id/imageView17"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
             android:ems="10"
-            android:hint="Full name here"
-            android:inputType="text"
-            android:textColorHint="@color/white" />
-
-        <EditText
-            android:id="@+id/editTextText8"
-            android:layout_width="259dp"
-            android:layout_height="66dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="306dp"
-            android:layout_marginEnd="57dp"
-            android:layout_marginBottom="142dp"
-            android:ems="10"
-            android:hint="Location"
+            android:hint="Dagatan, Lipa City, Batangas"
             android:inputType="text"
             android:textColorHint="@color/white" />
 
@@ -86,18 +62,36 @@
             android:id="@+id/editTextPhone2"
             android:layout_width="263dp"
             android:layout_height="66dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="58dp"
-            android:layout_marginTop="212dp"
-            android:layout_marginEnd="55dp"
-            android:layout_marginBottom="236dp"
+            android:layout_below="@id/editTextText6"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
             android:ems="10"
-            android:hint="Mobile Num"
+            android:hint="+639482106236"
             android:inputType="phone"
             android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/editTextText8"
+            android:layout_width="259dp"
+            android:layout_height="66dp"
+            android:layout_below="@id/editTextPhone2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="10"
+            android:hint="Dagatan, Lipa City"
+            android:inputType="text"
+            android:textColorHint="@color/white" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editTextText8"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Logout"
+            android:backgroundTint="#FF4444"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

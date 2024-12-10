@@ -27,15 +27,15 @@
     <form id="form1" runat="server">
         <h2>Barangay App Login</h2>
         <div>
-            <label for="txtName">Enter your name:</label>
+            <label for="txtName">Enter username:</label>
             <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
         </div>
         <div>
-            <label for="txtPassword">Enter your pass:</label>
+            <label for="txtPassword">Enter password:</label>
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
         </div>
         <div style="margin-top: 10px;">
-            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="Submit_Click" />
+            <asp:Button ID="btnSubmit" runat="server" Text="Login" OnClick="Submit_Click" />
         </div>
         <div>
             <asp:Label ID="lblResult" runat="server"></asp:Label>

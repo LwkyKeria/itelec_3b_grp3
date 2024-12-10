@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Text;
 using Newtonsoft.Json;
 
 namespace Barangay_Web_App2
@@ -13,18 +15,40 @@ namespace Barangay_Web_App2
             string username = txtName.Text;
             string password = txtPassword.Text;
 
-            // Call the async method to validate the user
-            bool isValidUser = await ValidateUserAsync(username, password);
+            // Validate input
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                lblResult.Text = "Username and password are required.";
+                return;
+            }
 
+            bool isValidUser = await ValidateUserAsync(username, password);
             if (isValidUser)
             {
-                // If the login is successful, redirect to Home.aspx
                 Response.Redirect("Home.aspx");
             }
             else
             {
-                // If login fails, show an error message
                 lblResult.Text = "Invalid username or password.";
+            }
+        }
+
+        private string HashPassword(string password, string username)
+        {
+            using (SHA512 sha512 = SHA512.Create())
+            {
+                // Concatenate password and username (matches the MySQL query)
+                string combined = password + username;
+                byte[] bytes = Encoding.UTF8.GetBytes(combined);
+                byte[] hash = sha512.ComputeHash(bytes);
+
+                // Convert to hex string to match MySQL UNHEX(SHA2()) format
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < hash.Length; i++)
+                {
+                    builder.Append(hash[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
 
@@ -36,35 +60,32 @@ namespace Barangay_Web_App2
                 {
                     string apiUrl = "https://barangayapp.x10.mx/api/routes/web_api.php";
 
-                    // Prepare the form data for the API
+                    // Hash the password before sending
+                    string hashedPassword = HashPassword(password, username);
+
                     var data = new FormUrlEncodedContent(new[]
                     {
                         new KeyValuePair<string, string>("username", username),
-                        new KeyValuePair<string, string>("password", password)
+                        new KeyValuePair<string, string>("password", hashedPassword)
                     });
 
-                    // Call the API
                     HttpResponseMessage response = await client.PostAsync(apiUrl, data);
                     string responseBody = await response.Content.ReadAsStringAsync();
-
-                    // Parse the API response
                     var result = JsonConvert.DeserializeObject<ApiResponse>(responseBody);
 
-                    // Return true if the user is valid, otherwise false
                     return result?.IsValidUser ?? false;
                 }
             }
             catch (Exception ex)
             {
-                // Log the error for debugging
-                Console.WriteLine("Error: " + ex.Message);
-                lblResult.Text = "Error occurred during login.";
+                // Log the error securely - avoid exposing error details to users
+                System.Diagnostics.Debug.WriteLine($"Login error: {ex.Message}");
+                lblResult.Text = "An error occurred during login. Please try again later.";
                 return false;
             }
         }
     }
 
-    // API response class
     public class ApiResponse
     {
         public bool IsValidUser { get; set; }

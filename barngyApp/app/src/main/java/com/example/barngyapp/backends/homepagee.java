@@ -31,21 +31,7 @@ public class homepagee extends AppCompatActivity {
         setContentView(R.layout.homepage); // Ensure this layout exists
 
         // Initialize the RecyclerView and the adapter
-        recyclerView = findViewById(R.id.recyclerView); // Make sure this ID exists
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        // Initialize the announcement list
-        announcementList = new ArrayList<>();
-        announcementList.add(new announcement("Event 1", "Description of event 1", "Oct 10, 2024"));
-        announcementList.add(new announcement("Event 2", "Description of event 2", "Oct 11, 2024"));
-        announcementList.add(new announcement("Event 3", "Description of event 3", "Oct 12, 2024"));
-        announcementList.add(new announcement("Event 4", "Description of event 4", "Oct 12, 2024"));
-        announcementList.add(new announcement("Event 5", "Description of event 5", "Oct 12, 2024"));
-        announcementList.add(new announcement("Event 6", "Description of event 6", "Oct 12, 2024"));
-        announcementList.add(new announcement("Event 7", "Description of event 7", "Oct 12, 2024"));
-
-        adapter = new AnnouncementAdapter(announcementList);
-        recyclerView.setAdapter(adapter);
+         // Make sure this ID exists
 
         // Apply system bars insets for padding
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -73,11 +59,6 @@ public class homepagee extends AppCompatActivity {
             startActivity(intent);
         });
 
-        RelativeLayout rlinfo = findViewById(R.id.infobr);
-        rlinfo.setOnClickListener(v -> {
-            Intent intent = new Intent(homepagee.this, brgyInfo.class); // Ensure BrgyInfo.class exists
-            startActivity(intent);
-        });
 
         RelativeLayout rlevent = findViewById(R.id.event);  // Ensure this ID matches the one in your XML layout
         rlevent.setOnClickListener(v -> {
